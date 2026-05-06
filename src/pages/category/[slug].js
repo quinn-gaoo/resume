@@ -32,7 +32,7 @@ export default function CategoryPage({ category, posts, categories }) {
   return (
     <>
       <Head>
-        <title>分类: {category} | 我的博客</title>
+        <title>{`分类: ${category} | 学习笔记`}</title>
         <meta
           name="description"
           content={`查看分类 "${category}" 下的所有文章`}
@@ -41,7 +41,7 @@ export default function CategoryPage({ category, posts, categories }) {
 
       <div className="min-h-screen bg-background">
         <header className="sticky top-0 z-50 glass-effect border-b border-border">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <Link href="/" className="flex items-center gap-2 group">
                 <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20 group-hover:shadow-primary/40 transition-shadow">
@@ -77,7 +77,7 @@ export default function CategoryPage({ category, posts, categories }) {
           </div>
         </header>
 
-        <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center gap-4 mb-8">
             <Link
               href="/"
@@ -220,7 +220,7 @@ export default function CategoryPage({ category, posts, categories }) {
         </main>
 
         <footer className="bg-card border-t border-border mt-16">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">

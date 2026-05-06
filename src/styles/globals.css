@@ -5,6 +5,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+body {
+  font-size: 15px;
+}
+
 :root {
   --background: oklch(0.98 0.002 292);
   --foreground: oklch(0.14 0.008 265);
@@ -154,25 +158,25 @@
 .prose {
   color: var(--muted-foreground);
   line-height: 1.8;
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
 .prose h1 {
-  font-size: 2.25rem;
+  font-size: 2rem;
   font-weight: 800;
   margin-top: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   color: var(--foreground);
 }
 
 .prose h2 {
-  font-size: 1.625rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 0.875rem;
   color: var(--foreground);
   position: relative;
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.625rem;
 }
 
 .prose h2::after {
@@ -180,30 +184,30 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 60px;
-  height: 3px;
+  width: 48px;
+  height: 2px;
   background: var(--primary);
   border-radius: 2px;
 }
 
 .prose h3 {
-  font-size: 1.375rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.625rem;
   color: var(--foreground);
 }
 
 .prose p {
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   text-align: justify;
 }
 
 .prose ul, .prose ol {
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
-  padding-left: 1.75rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
 }
 
 .prose ul {
@@ -215,9 +219,9 @@
 }
 
 .prose li {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  padding-left: 0.5rem;
+  margin-top: 0.375rem;
+  margin-bottom: 0.375rem;
+  padding-left: 0.375rem;
 }
 
 .prose a {
@@ -240,8 +244,8 @@
 
 .prose code {
   background-color: var(--secondary);
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.375rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
   font-size: 0.875em;
   font-family: var(--font-mono);
   color: var(--primary);
@@ -249,49 +253,97 @@
 
 .prose pre {
   background-color: oklch(0.14 0 0);
-  border-radius: 0.75rem;
-  padding: 1.25rem;
+  border-radius: 0.5rem;
+  padding: 0;
   overflow-x: auto;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
   position: relative;
   border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.prose pre .code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem 1rem;
+  background-color: oklch(0.18 0 0);
+  border-bottom: 1px solid oklch(0.25 0 0);
+}
+
+.prose pre .language-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: oklch(0.60 0 0);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.prose pre .copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  color: oklch(0.60 0 0);
+  background-color: transparent;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.prose pre .copy-btn:hover {
+  color: oklch(0.92 0.002 265);
+  background-color: oklch(0.25 0 0);
+}
+
+.prose pre .copy-btn.copied {
+  color: oklch(0.55 0.15 145);
+}
+
+.prose pre .copy-btn svg {
+  width: 12px;
+  height: 12px;
 }
 
 .prose pre code {
+  display: block;
   background-color: transparent;
-  padding: 0;
+  padding: 1rem;
   color: oklch(0.92 0.002 265);
   font-size: 0.875em;
   line-height: 1.6;
+  overflow-x: auto;
 }
 
 .prose blockquote {
-  border-left: 4px solid var(--primary);
-  padding-left: 1.25rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  border-left: 3px solid var(--primary);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
   color: var(--muted-foreground);
   font-style: italic;
   background-color: var(--secondary);
-  padding: 1rem 1.25rem;
-  border-radius: 0 0.5rem 0.5rem 0;
+  border-radius: 0 0.375rem 0.375rem 0;
 }
 
 .prose table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
   background-color: var(--card);
-  border-radius: 0.75rem;
+  border-radius: 0.5rem;
   overflow: hidden;
   border: 1px solid var(--border);
 }
 
 .prose th, .prose td {
   border-bottom: 1px solid var(--border);
-  padding: 0.875rem 1rem;
+  padding: 0.75rem 1rem;
   text-align: left;
 }
 
@@ -308,15 +360,15 @@
 .prose hr {
   border: none;
   border-top: 1px solid var(--border);
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .prose img {
   max-width: 100%;
   border-radius: 0.5rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
 }
 
 /* 暗色模式 */

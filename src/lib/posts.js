@@ -6,6 +6,8 @@ import remarkRehype from "remark-rehype";
 import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
 import gfm from "remark-gfm";
+import rehypeCodeBlock from "./rehype-code-block";
+import { extractHeadings, addHeadingIds } from "./headings";
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
 
@@ -62,14 +64,17 @@ export async function getPostData(slug) {
   const processedContent = await remark()
     .use(gfm)
     .use(remarkRehype)
-    .use(rehypeHighlight)
+    .use(rehypeHighlight, { ignoreMissing: true })
+    .use(rehypeCodeBlock)
     .use(rehypeStringify)
     .process(post.content);
-  const contentHtml = processedContent.toString();
+  const contentHtml = addHeadingIds(processedContent.toString());
+  const headings = extractHeadings(post.content);
 
   return {
     ...post,
     contentHtml,
+    headings,
   };
 }
 
