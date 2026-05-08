@@ -14,8 +14,8 @@
 /coverage
 
 # next.js
-/.next/
-/out/
+**/.next/
+**/out/
 
 # production
 /build
@@ -44,5 +44,5 @@ next-env.d.ts
 # Cloudflare Worker
 /.wrangler/
 .dev.vars
-worker/.wrangler/
-worker/.dev.vars
+**/.wrangler/
+**/.dev.vars
