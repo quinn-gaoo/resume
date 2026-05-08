@@ -49,16 +49,18 @@ export default function rehypeCodeBlock() {
         const codeNode = node.children[0];
         if (codeNode && codeNode.tagName === "code") {
           const className = codeNode.properties?.className || [];
-          const languageClass = className.find((c) => c.startsWith("language-"));
+          const languageClass = className.find((c) =>
+            c.startsWith("language-"),
+          );
           let language = "Code";
-          
+
           if (languageClass) {
             const lang = languageClass.replace("language-", "");
             language = languageNames[lang] || lang || "Code";
           }
 
           const codeContent = codeNode.children[0]?.value || "";
-          
+
           const headerNode = {
             type: "element",
             tagName: "div",
@@ -94,7 +96,10 @@ export default function rehypeCodeBlock() {
                       "stroke-linejoin": "round",
                     },
                     children: [
-                      { type: "text", value: `<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>` },
+                      {
+                        type: "text",
+                        value: `<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>`,
+                      },
                     ],
                   },
                   { type: "text", value: "Copy" },

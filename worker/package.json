@@ -1,0 +1,21 @@
+{
+  "name": "@resume/worker",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "preview": "wrangler preview",
+    "deploy": "wrangler deploy --env production",
+    "deploy:dev": "wrangler deploy --env development",
+    "kv:create": "wrangler kv:namespace create COUNTER_KV",
+    "kv:list": "wrangler kv:key list --namespace-id=COUNTER_KV"
+  },
+  "keywords": ["cloudflare", "worker", "counter"],
+  "author": "",
+  "license": "ISC",
+  "description": "Cloudflare Worker for blog view counter",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

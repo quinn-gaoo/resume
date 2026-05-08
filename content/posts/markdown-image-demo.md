@@ -80,6 +80,7 @@ public/
 ```
 
 在文章中引用：
+
 - `/images/posts/demo-image-1.png`
 - `/images/avatar.png`
 

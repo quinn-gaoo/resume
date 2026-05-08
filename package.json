@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "preview": "npx serve dist",
-    "lint": "eslint"
+    "lint": "eslint",
+    "install:all": "pnpm install && pnpm --filter @resume/worker install",
+    "worker:dev": "pnpm --filter @resume/worker dev",
+    "worker:deploy": "pnpm --filter @resume/worker deploy",
+    "worker:kv:create": "pnpm --filter @resume/worker kv:create"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import TableOfContents from "@/components/TableOfContents";
+import ViewCounter from "@/components/ViewCounter";
 
 export async function getStaticPaths() {
   const slugs = getAllSlugs();
@@ -115,6 +116,10 @@ export default function Post({ post }) {
                     <Calendar className="w-4 h-4" />
                     {post.date}
                   </span>
+
+                  <span className="text-muted-foreground">|</span>
+
+                  <ViewCounter slug={post.slug} />
 
                   {post.tags && post.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2">

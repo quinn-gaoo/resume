@@ -3,6 +3,7 @@ import Head from "next/head";
 import { groupPostsByYear, getAllCategories } from "@/lib/posts";
 import { Calendar, ArrowLeft, Archive, Sparkles } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
+import ViewCountDisplay from "@/components/ViewCountDisplay";
 
 export async function getStaticProps() {
   const groupedPosts = groupPostsByYear();
@@ -86,7 +87,9 @@ export default function ArchivePage({ groupedPosts, categories }) {
                 <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
                   文章归档
                 </h1>
-                <p className="text-muted-foreground">时间的痕迹，知识的积累 · 共 {totalPosts} 篇文章</p>
+                <p className="text-muted-foreground">
+                  时间的痕迹，知识的积累 · 共 {totalPosts} 篇文章
+                </p>
               </div>
             </div>
           </div>
@@ -125,7 +128,7 @@ export default function ArchivePage({ groupedPosts, categories }) {
                                 {post.title}
                               </h3>
                             </Link>
-                            <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                            <div className="flex items-center gap-3 text-sm text-muted-foreground flex-wrap">
                               <span className="flex items-center gap-1">
                                 <Calendar className="w-3.5 h-3.5" />
                                 {post.date}
@@ -138,6 +141,7 @@ export default function ArchivePage({ groupedPosts, categories }) {
                                   {post.category}
                                 </Link>
                               )}
+                              <ViewCountDisplay slug={post.slug} />
                             </div>
                           </div>
                         </div>
@@ -242,8 +246,8 @@ export default function ArchivePage({ groupedPosts, categories }) {
                 <span className="font-semibold text-foreground">学习笔记</span>
               </div>
               <p className="text-sm text-muted-foreground">
-                持续学习，不断进步。<br />
-                © {new Date().getFullYear()} 学习笔记. Built with{" "}
+                持续学习，不断进步。
+                <br />© {new Date().getFullYear()} 学习笔记. Built with{" "}
                 <span className="text-primary font-medium">Next.js</span>.
               </p>
             </div>

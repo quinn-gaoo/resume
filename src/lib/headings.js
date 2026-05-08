@@ -27,14 +27,16 @@ export function addHeadingIds(htmlContent) {
   if (!htmlContent) return htmlContent;
 
   let index = 0;
-  return htmlContent.replace(/<h([2-4])>(.*?)<\/h\1>/gi, (match, level, text) => {
-    const cleanText = text.replace(/<[^>]*>/g, "").trim();
-    const id =
-      cleanText
-        .toLowerCase()
-        .replace(/[^\w\u4e00-\u9fa5]+/g, "-")
-        .replace(/^-+|-+$/g, "") ||
-      `heading-${index++}`;
-    return `<h${level} id="${id}">${text}</h${level}>`;
-  });
+  return htmlContent.replace(
+    /<h([2-4])>(.*?)<\/h\1>/gi,
+    (match, level, text) => {
+      const cleanText = text.replace(/<[^>]*>/g, "").trim();
+      const id =
+        cleanText
+          .toLowerCase()
+          .replace(/[^\w\u4e00-\u9fa5]+/g, "-")
+          .replace(/^-+|-+$/g, "") || `heading-${index++}`;
+      return `<h${level} id="${id}">${text}</h${level}>`;
+    },
+  );
 }

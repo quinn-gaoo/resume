@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getAllPosts, getAllCategories } from "@/lib/posts";
 import { Calendar, FolderOpen, Tag, ArrowRight, Sparkles } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
+import ViewCountDisplay from "@/components/ViewCountDisplay";
 
 export async function getStaticProps() {
   const posts = getAllPosts();
@@ -99,7 +100,7 @@ export default function Home({ posts, categories }) {
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-3">
+                    <div className="flex items-center gap-2 mb-3 flex-wrap">
                       <Link
                         href={`/category/${post.category}/`}
                         className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium hover:bg-primary/20 transition-colors"
@@ -110,6 +111,7 @@ export default function Home({ posts, categories }) {
                         <Calendar className="w-3 h-3" />
                         {post.date}
                       </span>
+                      <ViewCountDisplay slug={post.slug} />
                     </div>
 
                     <Link href={`/posts/${post.slug}/`}>

@@ -3,6 +3,7 @@ import Head from "next/head";
 import { getAllCategories, getPostsByCategory } from "@/lib/posts";
 import { Calendar, FolderOpen, ArrowLeft, ArrowRight } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
+import ViewCountDisplay from "@/components/ViewCountDisplay";
 
 export async function getStaticPaths() {
   const categories = getAllCategories();
@@ -124,11 +125,12 @@ export default function CategoryPage({ category, posts, categories }) {
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-3">
+                        <div className="flex items-center gap-2 mb-3 flex-wrap">
                           <span className="flex items-center gap-1 text-xs text-muted-foreground">
                             <Calendar className="w-3 h-3" />
                             {post.date}
                           </span>
+                          <ViewCountDisplay slug={post.slug} />
                         </div>
 
                         <Link href={`/posts/${post.slug}/`}>
