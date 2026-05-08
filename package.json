@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm --filter @resume/blog dev",
-    "build": "pnpm --filter @resume/blog build",
-    "start": "pnpm --filter @resume/blog start",
-    "worker:dev": "pnpm --filter @resume/worker dev",
-    "worker:deploy": "pnpm --filter @resume/worker deploy",
-    "install:all": "pnpm install"
+    "install:all": "pnpm install",
+    "blog:dev": "pnpm --filter @resume/blog dev",
+    "blog:build": "pnpm --filter @resume/blog build",
+    "blog:start": "pnpm --filter @resume/blog start",
+    "blog-worker:dev": "pnpm --filter @resume/worker dev",
+    "blog-worker:deploy": "pnpm --filter @resume/worker deploy"
   }
 }
