@@ -14,7 +14,7 @@ name = "blog-counter-prod"
 # KV 命名空间绑定
 # 需要在 Cloudflare 控制台创建 KV 命名空间后填写 ID
 kv_namespaces = [
-  { binding = "COUNTER_KV", id = "adaa574b52614a2780b96cea377efaae", preview_id = "adaa574b52614a2780b96cea377efaae" }
+  { binding = "COUNTER_KV", id = "665c5f9274b841c5a33670068108e376", preview_id = "665c5f9274b841c5a33670068108e376" }
 ]
 
 # 路由配置（部署后配置）

@@ -4,7 +4,7 @@ import { Eye } from "lucide-react";
 // 根据环境选择 Worker URL
 const WORKER_URL =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:8888"
+    ? "http://localhost:8787"
     : "https://blog-counter-prod.quinnn-gao.workers.dev";
 
 // 缓存浏览次数
