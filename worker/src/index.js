@@ -101,6 +101,20 @@ export default {
     // 判断是否在本地开发环境
     const isLocalDev = !env.COUNTER_KV;
 
+    // CORS 响应头
+    const corsHeaders = {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, X-Requested-With",
+    };
+
+    // 处理预检请求
+    if (request.method === "OPTIONS") {
+      return new Response(null, {
+        headers: corsHeaders,
+      });
+    }
+
     // 处理计数请求（带设备指纹去重）
     if (path.startsWith("/api/counter/")) {
       const slug = path.replace("/api/counter/", "");
@@ -108,7 +122,7 @@ export default {
       if (!slug) {
         return new Response(JSON.stringify({ error: "Missing slug" }), {
           status: 400,
-          headers: { "Content-Type": "application/json" },
+          headers: corsHeaders,
         });
       }
 
@@ -141,37 +155,13 @@ export default {
           mode: isLocalDev ? "local" : "production",
         }),
         {
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type",
-          },
-        },
-      );
-    }
-
-    // 处理获取计数请求（不递增，用于列表页）
-    if (path.startsWith("/api/views/")) {
-      const slug = path.replace("/api/views/", "");
-      const views = await getViewCount(slug, env, isLocalDev);
-
-      return new Response(
-        JSON.stringify({
-          slug,
-          views,
-          mode: isLocalDev ? "local" : "production",
-        }),
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
+          headers: corsHeaders,
         },
       );
     }
 
     // 批量获取计数（用于列表页）
+    // 注意：这个判断要在 /api/views/ 之前，因为 /api/views/batch 也会匹配 startsWith("/api/views/")
     if (path === "/api/views/batch" && request.method === "POST") {
       try {
         const body = await request.json();
@@ -195,29 +185,32 @@ export default {
             mode: isLocalDev ? "local" : "production",
           }),
           {
-            headers: {
-              "Content-Type": "application/json",
-              "Access-Control-Allow-Origin": "*",
-            },
+            headers: corsHeaders,
           },
         );
       } catch (error) {
         return new Response(JSON.stringify({ error: "Invalid request body" }), {
           status: 400,
-          headers: { "Content-Type": "application/json" },
+          headers: corsHeaders,
         });
       }
     }
 
-    // 处理预检请求
-    if (request.method === "OPTIONS") {
-      return new Response(null, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type",
+    // 处理获取计数请求（不递增，用于列表页）
+    if (path.startsWith("/api/views/")) {
+      const slug = path.replace("/api/views/", "");
+      const views = await getViewCount(slug, env, isLocalDev);
+
+      return new Response(
+        JSON.stringify({
+          slug,
+          views,
+          mode: isLocalDev ? "local" : "production",
+        }),
+        {
+          headers: corsHeaders,
         },
-      });
+      );
     }
 
     // 健康检查

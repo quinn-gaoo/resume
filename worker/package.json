@@ -4,14 +4,18 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "dev": "wrangler dev",
+    "dev": "wrangler dev --port 8888",
     "preview": "wrangler preview",
     "deploy": "wrangler deploy --env production",
     "deploy:dev": "wrangler deploy --env development",
     "kv:create": "wrangler kv:namespace create COUNTER_KV",
     "kv:list": "wrangler kv:key list --namespace-id=COUNTER_KV"
   },
-  "keywords": ["cloudflare", "worker", "counter"],
+  "keywords": [
+    "cloudflare",
+    "worker",
+    "counter"
+  ],
   "author": "",
   "license": "ISC",
   "description": "Cloudflare Worker for blog view counter",

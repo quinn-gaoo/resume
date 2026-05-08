@@ -1,43 +1,47 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Eye } from "lucide-react";
 
-// 根据环境选择 Worker URL
 const WORKER_URL =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:8787"
+    ? "http://localhost:8888"
     : "https://blog-counter-prod.quinnn-gao.workers.dev";
 
-// 缓存浏览次数
 const viewsCache = {};
 
 export default function ViewCountDisplay({ slug, className = "" }) {
-  const cachedViews = viewsCache[slug];
-  const [views, setViews] = useState(cachedViews);
-  const [isLoading, setIsLoading] = useState(cachedViews === undefined);
+  const [views, setViews] = useState(() => viewsCache[slug]);
+  const [isError, setIsError] = useState(false);
+  const hasFetched = useRef(viewsCache[slug] !== undefined);
 
   useEffect(() => {
-    if (!slug || cachedViews !== undefined) return;
+    if (!slug || hasFetched.current) return;
+    hasFetched.current = true;
 
-    // 获取浏览次数（不递增）
     fetch(`${WORKER_URL}/api/views/${slug}`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error("Network response was not ok");
+        return res.json();
+      })
       .then((data) => {
         viewsCache[slug] = data.views;
         setViews(data.views);
-        setIsLoading(false);
       })
       .catch((err) => {
         console.error("Failed to fetch views:", err);
-        setIsLoading(false);
+        setIsError(true);
       });
-  }, [slug, cachedViews]);
+  }, [slug]);
+
+  if (isError || views === undefined) {
+    return null;
+  }
 
   return (
     <span
       className={`flex items-center gap-1 text-xs text-muted-foreground ${className}`}
     >
       <Eye className="w-3 h-3" />
-      <span>{isLoading ? "-" : views?.toLocaleString() || 0}</span>
+      <span>{views?.toLocaleString() || 0}</span>
     </span>
   );
 }
