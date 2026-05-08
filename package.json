@@ -8,6 +8,9 @@
     "blog:build": "pnpm --filter @resume/blog build",
     "blog:start": "pnpm --filter @resume/blog start",
     "blog-worker:dev": "pnpm --filter @resume/worker dev",
-    "blog-worker:deploy": "pnpm --filter @resume/worker deploy"
+    "blog-worker:deploy": "pnpm --filter @resume/worker deploy",
+    "quinn:dev": "pnpm --filter @resume/quinn dev",
+    "quinn:build": "pnpm --filter @resume/quinn build",
+    "quinn:preview": "pnpm --filter @resume/quinn preview"
   }
 }

@@ -1,0 +1,39 @@
+.work{
+  &-item{
+    border-top: 3px solid #699fca;
+    >header{
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      color: #444;
+      background: #2479b414;
+      padding: 8px 0;
+      flex-wrap: wrap;
+      h3{
+        // background: #2479b4;
+        color: #0e63b8;
+        flex-shrink: 0;
+      }
+      h4{
+        flex-shrink: 0;
+        margin-right: 18px;
+      }
+      .time{
+        font-weight: 200;
+        color: #2479b4;
+        font-size: 14px;
+
+      }
+    }
+    .desc{
+      color: #666;
+      // font-size: 14px;
+    }
+    .project{
+      color: #444;
+      &-item{
+
+      }
+    }
+  }
+}
