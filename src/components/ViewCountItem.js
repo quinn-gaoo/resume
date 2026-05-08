@@ -9,7 +9,9 @@ export default function ViewCountItem({ slug, className = "" }) {
   }
 
   return (
-    <span className={`flex items-center gap-1 text-xs text-muted-foreground ${className}`}>
+    <span
+      className={`flex items-center gap-1 text-xs text-muted-foreground ${className}`}
+    >
       <Eye className="w-3 h-3" />
       <span>{views?.toLocaleString() || 0}</span>
     </span>
