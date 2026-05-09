@@ -7,8 +7,8 @@
   "residence": "成都",
   "phoneNumber": "15504473441",
   "email": "quinnn.gao@gmail.com",
-  "githubSite": "https://github.com/quinn-gaoo",
-  "site": "https://www.qiangqiang.work",
+  "githubSite": "github.com/quinn-gaoo",
+  "site": "qiangqiang.work",
   "workHistory": [
     {
       "companyName": "Polkadot Subsquare",
@@ -53,7 +53,7 @@
     },
     {
       "companyName": "Impact Theory",
-      "job": "Web3 高级前端工程师",
+      "job": "高级前端工程师",
       "timeRange": ["2022-04", "2024-12"],
       "jobContent": [
         {

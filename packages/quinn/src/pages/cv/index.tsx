@@ -3,6 +3,7 @@ import data from '@/data/personal-details.json'
 import { PiBriefcaseFill, PiCalendarFill, PiGithubLogoFill, PiGlobeFill } from "react-icons/pi";
 import workData from '@/data/work-data.json'
 import { Button } from '@/components/ui/button';
+import Education from './components/education';
 
 
 const row = [
@@ -15,7 +16,7 @@ const row = [
     {
       label: "网 站",
       value: data.site,
-      href: data.site,
+      href: `//${data.site}`,
       Icon: PiGlobeFill
     },
   ],
@@ -44,7 +45,7 @@ const row = [
     {
       label: "GitHub",
       value: data.githubSite,
-      href: data.githubSite,
+      href: `//${data.githubSite}`,
       Icon: PiGithubLogoFill
     },
   ],
@@ -98,6 +99,9 @@ const PrintPage = () => {
             <h2 className="py-2 font-medium text-2xl">技术栈</h2>
             <div className="  text-[13px] leading-5.25 flex flex-wrap gap-2 text-muted-foreground">
               <p><span className="font-medium text-[#333]">框架方向：</span> 精通Vue2/3、React 等现代前端框架，理解两个框架之间的核心原理以及差异，拥有两大框架开发多个大型项目的经验，对两大框架的周边生态（Vue Router、Pina、 VueX、 React Router 、 Redux、 Zustand）有一定的使用心得体会。</p>
+              <p><span className="font-medium text-[#333]">AI能力：</span>
+                具备 AI 驱动的前端工程化能力，熟练运用 Claude Code、Codex, Cursor, Trae 提效，同时掌握 RAG 及 LangChain 框架，能够将大模型能力落地于实际业务场景。
+              </p>
               <p><span className="font-medium text-[#333]">性能优化：</span> 掌握前端常见性能优化手段，包括代码分割、 懒加载、 资源优化等技术，显著降低FCP（First Contentful Paint）和LCP（Largest Contentful Paint）时间，提升用户交互体验。</p>
               <p><span className="font-medium text-[#333]">架构搭建：</span> 拥有自定义脚手架的能力，可根据需求从0到1搭建整个monorepo/multirepo项目，并自定义构建流程和打包优化。  </p>
               <p><span className="font-medium text-[#333]">单元测试：</span> 掌握Jest、Vitest等前端测试框架，以及Python的自动化测试工具AirTest。针对公共模块能够编写出高覆盖率的测试用例，提升代码健壮性。  </p>
@@ -176,30 +180,43 @@ const PrintPage = () => {
                 })}
             </div>
           </section>
-          <section id="education">
+          <section id="projects">
             <header className="pb-2">
-              <h2 className=" pb-2 font-semibold tracking-tight text-3xl">教育经历</h2>
+              <h2 className="py-2 font-semibold tracking-tight text-2xl">开源项目</h2>
             </header>
-            <div>
-              <div className="rounded-xl text-card-foreground ">
-                <div className="flex flex-col py-3 space-y-2">
-                  <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <h3 className="font-semibold tracking-tight text-xl">长春工业大学</h3>
-                    <span className="text-sm text-muted-foreground">2016-2019</span>
+            <div className="grid gap-4">
+              {
+                workData.openProject.map((item, index) => {
+                  return <div key={index} className="text-card-foreground  ">
+                    <div className="flex flex-col py-3">
+                      <div className="flex flex-wrap items-baseline justify-between gap-2">
+                        <h3 className="font-semibold tracking-tight text-xl">{item.name}</h3>
+                        {/* <span className="text-sm text-muted-foreground">{work.timeRange[0]} – {work.timeRange[1]}</span> */}
+                      </div>
+                    </div>
+                    <p className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                      {item.description}
+                    </p>
+                    <div className="py-3 pt-1">
+                      <span className='text-sm font-medium text-card-foreground'>主要职责：</span>
+                      <ul className="space-y-2.5">
+                        {item.responsibilities.map((r, i) => (
+                          <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground" aria-hidden="true"></span>
+                            <span>{r}</span>
+                          </li>
+                        ))}
+                        <div className="text-sm text-muted-foreground">
+                          <span className='font-medium text-card-foreground'>技术栈：</span>
+                          {item.techStack.join(" / ")}
+                        </div>
+                      </ul>
+                    </div>
                   </div>
-                  <p className="text-muted-foreground text-xs uppercase tracking-[0.16em]">计算机信息管理</p>
-                </div>
-                <div className="py-3 pt-0">
-                  <ul className="space-y-2.5">
-
-                    <li className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
-                      主修课程：数据结构、计算机网络、操作系统、数据库原理、编译原理等
-                    </li>
-                  </ul>
-                </div>
-              </div>
+                })}
             </div>
           </section>
+          <Education />
         </div>
       </div>
     </div>

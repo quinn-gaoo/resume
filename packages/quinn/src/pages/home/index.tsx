@@ -14,7 +14,7 @@ const baseInfo = [
 const contactInfo = [
   { label: "电话", value: data.phoneNumber, href: `tel:${data.phoneNumber}` },
   { label: "邮箱", value: data.email, href: `mailto:${data.email}` },
-  { label: "GitHub", value: data.githubSite, href: data.githubSite },
+  { label: "GitHub", value: data.githubSite, href: `//${data.githubSite}` },
 ]
 
 function App() {

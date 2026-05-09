@@ -5,6 +5,10 @@
       "desc": "精通Vue2/3、React 等现代前端框架，理解两个框架之间的核心原理以及差异，拥有两大框架开发多个大型项目的经验，对两大框架的周边生态（Vue Router、Pina、 VueX、 React Router 、 Redux、 Zustand）有一定的使用心得体会。"
     },
     {
+      "title": "AI 能力",
+      "desc": "具备 AI 驱动的前端工程化能力，熟练运用 Claude Code、Codex, Cursor, Trae 提效，同时掌握 RAG 及 LangChain 框架，能够将大模型能力落地于实际业务场景。"
+    },
+    {
       "title": "性能优化",
       "desc": "掌握前端常见性能优化手段，包括代码分割、 懒加载、 资源优化等技术，显著降低FCP（First Contentful Paint）和LCP（Largest Contentful Paint）时间，提升用户交互体验。"
     },
@@ -40,8 +44,8 @@
   "workExperience": [
     {
       "company": "Polkadot Subsquare",
-      "position": "Web3前端工程师",
-      "timeRange": ["2025-03", "2026-01"],
+      "position": "高级前端工程师",
+      "timeRange": ["2025-03", "至今"],
       "responsibilities": [
         "作为核心前端开发，负责 Polkadot OpenGov 治理系统的前端技术设计与核心模块实现",
         "主导治理类通用前端能力建设，与团队协作完成提案创建、投票、执行等核心流程",
@@ -104,7 +108,7 @@
     },
     {
       "company": "Impact Theory",
-      "position": "Web3 高级前端工程师",
+      "position": "高级前端工程师",
       "timeRange": ["2022-04", "2024-12"],
       "responsibilities": [
         "参与公司多款游戏相关产品的前端与桌面端开发，涵盖 桌面启动器、运营管理后台、游戏 Web 端页面及在线学习系统",
@@ -117,7 +121,7 @@
         {
           "name": "Kyzen 游戏启动器与游戏活动页面",
           "link": "https://projectkyzen.io",
-          "role": "web3前端工程师",
+          "role": "高级前端工程师",
           "responsibilities": [
             "设计多任务下载调度与状态管理模型，支持断点续传和失败重试",
             "参与游戏活动页面的从 0 到 1 搭建，负责页面结构、交互逻辑及与后端的数据对接",
@@ -219,6 +223,47 @@
         "独立负责业务页面的前端开发与交互实现，完成 PC / Mobile 端页面搭建，并与后端协作完成接口联调与性能优化",
         "参与基于 Vue 的人员上报系统开发，负责数据请求封装、全局状态管理及核心页面实现",
         "完成跨平台应用功能实现与数据可视化展示,使用 ECharts 实现数据统计与可视化展示，支持异常数据监控与提示，保障系统按期上线"
+      ]
+    }
+  ],
+  "openProject": [
+    {
+      "name": "仓库代码安全审计工具",
+      "link": "https://projectkyzen.io",
+      "description": [
+        "研发基于MCP Server 协议的前端通用安全依赖，代码质量审计工具，解决npm audit 的核心痛点，工具支持本地工程和远程仓库，包括CVSS,CWE，依赖链等想滚啊审计信息，审计输出为标准化Markdown文件，将来支持渲染为其他格式，如JSON，HTML等，工具可用于本地依赖检查和技术选型等安全审计工作"
+      ],
+      "responsibilities": [
+        "基于 MCP Server 协议 构建标准化审计服务，实现工具与 IDE / CI 环境的解耦集成",
+        "支持 CVSS、CWE 等安全标准输出，提供依赖链（依赖路径） 级别的完整审计信息",
+        "同时支持本地工程和远程仓库（Git Clone） 两种扫描模式，覆盖开发与审查场景",
+        "审计结果输出为标准化 Markdown 文件，并预留 JSON / HTML 等多格式渲染扩展能力",
+        "可应用于本地依赖检查、技术选型安全评估、CI 门禁等实际工作流"
+      ],
+      "techStack": ["NodeJS", "MCP Server", "Zod", "TypeScript", "GitHub API"]
+    },
+    {
+      "name": "RAG Sass 系统",
+      "description": [
+        "独立设计并开发了一款面向企业和个人用户的 RAG SaaS 系统，支持用户上传文档、构建知识库，并通过大语言模型进行精准问答。系统实现了从文档解析、向量化存储到检索生成的全链路流程"
+      ],
+      "responsibilities": [
+        "基于 LangChain 框架构建 RAG 流水线，整合文档加载、文本分块、向量存储与检索增强生成",
+        "对接 OpenAI / 开源大模型，支持多种 Embedding 模型灵活切换",
+        "设计多租户架构，实现用户隔离与知识库权限管理",
+        "开发前端交互界面，支持文档上传、对话式问答、检索溯源展示",
+        "使用 Copilot, Trae 等 AI 工具辅助开发，提升编码与调试效率"
+      ],
+      "techStack": [
+        "React",
+        "TypeScript",
+        "TailwindCSS",
+        "Python",
+        "FastApi",
+        "LangChain",
+        "RAG",
+        "Embedding",
+        "Chroma"
       ]
     }
   ]
