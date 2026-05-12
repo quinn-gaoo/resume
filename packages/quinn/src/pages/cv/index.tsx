@@ -177,16 +177,14 @@ const PrintPage = () => {
           <section className='py-2'>
             <h2 className="py-2 font-medium text-2xl">技术栈</h2>
             <div className="  text-[13px] leading-5.25 flex flex-wrap gap-2 text-muted-foreground">
-              <p><span className="font-medium text-[#333]">框架方向：</span> 精通Vue2/3、React 等现代前端框架，理解两个框架之间的核心原理以及差异，拥有两大框架开发多个大型项目的经验，对两大框架的周边生态（Vue Router、Pina、 VueX、 React Router 、 Redux、 Zustand）有一定的使用心得体会。</p>
-              <p><span className="font-medium text-[#333]">AI能力：</span>
-                具备 AI 驱动的前端工程化能力，熟练运用 Claude Code、Codex, Cursor, Trae 提效，同时掌握 RAG 及 LangChain 框架，能够将大模型能力落地于实际业务场景。
+              <p><span className="font-medium text-[#333]">框架方向：</span> 深度掌握 Vue 2/3 与 React 运行时原理（响应式系统、Fiber 架构、Diff 算法差异），主导过双框架大型项目的技术选型与迁移。熟练设计状态管理方案（Pinia/Vuex、Redux/Zustand），能够基于业务特征选择合适的技术范式</p>
+              <p><span className="font-medium text-[#333]">AI 能力：</span>将 Claude Code/Cursor/Codex 深度集成至研发工作流，构建 AI 辅助编码规范与 Code Review 流水线。掌握 RAG 检索增强与 LangChain 应用框架，具备将 LLM 能力产品化并嵌入业务链路的设计经验。
               </p>
               <p><span className="font-medium text-[#333]">性能优化：</span> 掌握前端常见性能优化手段，包括代码分割、 懒加载、 资源优化等技术，显著降低FCP（First Contentful Paint）和LCP（Largest Contentful Paint）时间，提升用户交互体验。</p>
               <p><span className="font-medium text-[#333]">架构搭建：</span> 拥有自定义脚手架的能力，可根据需求从0到1搭建整个monorepo/multirepo项目，并自定义构建流程和打包优化。  </p>
               <p><span className="font-medium text-[#333]">单元测试：</span> 掌握Jest、Vitest等前端测试框架，以及Python的自动化测试工具AirTest。针对公共模块能够编写出高覆盖率的测试用例，提升代码健壮性。  </p>
-              <p><span className="font-medium text-[#333]">Web3方向：</span> 熟悉web3 生态，有 web3 前端开发相关经验，熟悉web3.js、ethers.js等前端库。 并和链上数据交互。 </p>
-              <p><span className="font-medium text-[#333]">后端能力：</span> 熟悉Node.js的后端框架（如Express、Koa、Next.js、Nuxt.js），了解Golang、Python其他后端语言。能够设计并实现Restful风格得API，做到前后端分离和SSR。  </p>
-              <p><span className="font-medium text-[#333]">数据库方向：</span> 了解基本SQL语句，以及Mysql、PostgreSQL,MonngoDB的使用，能够设计简单的数据库模型，进行数据CURD操作。  </p>
+              {/* <p><span className="font-medium text-[#333]">Web3方向：</span> 熟悉web3 生态，有 web3 前端开发相关经验，熟悉web3.js、ethers.js等前端库。 并和链上数据交互。 </p> */}
+              <p><span className="font-medium text-[#333]">全栈技术：</span> 使用 Node.js（Express/Koa/Next.js/Nuxt.js）设计 RESTful API 与 SSR 同构应用，具备 Golang/Python 多语言协作经验。熟悉关系型（MySQL/PostgreSQL）与非关系型（MongoDB）数据库设计，能够完成业务数据建模与性能调优</p>
             </div>
           </section>
 
@@ -318,7 +316,7 @@ const PrintPage = () => {
           </section>
           <section id="other-projects">
             <header className="pb-2">
-              <h2 className="py-2 font-semibold tracking-tight text-2xl">开源项目</h2>
+              <h2 className="py-2 font-semibold tracking-tight text-2xl">其他项目</h2>
             </header>
             <div className="grid gap-4">
               {
