@@ -1,7 +1,7 @@
 export default function Education() {
   return <section id="education">
     <header className="pb-2">
-      <h2 className=" pb-2 font-semibold tracking-tight text-3xl">教育经历</h2>
+      <h2 className=" pb-2 font-semibold tracking-tight text-2xl">教育经历</h2>
     </header>
     <div>
       <div className="rounded-xl text-card-foreground ">

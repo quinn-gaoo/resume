@@ -1,9 +1,9 @@
 import dayjs from 'dayjs'
 import data from '@/data/personal-details.json'
 import { PiBriefcaseFill, PiCalendarFill, PiGithubLogoFill, PiGlobeFill } from "react-icons/pi";
-import workData from '@/data/work-data.json'
 import { Button } from '@/components/ui/button';
 import Education from './components/education';
+import newData from './简历.json'
 
 
 const row = [
@@ -37,6 +37,20 @@ const row = [
   [
 
     {
+      label: "学历",
+      value: "本科",
+      Icon: PiBriefcaseFill
+    },
+    {
+      label: "博客",
+      value: "blog.qiangqiang.work",
+      href: `//blog.qiangqiang.work`,
+      Icon: PiGlobeFill
+    },
+  ],
+  [
+
+    {
       label: "电 话",
       href: `tel:${data.phoneNumber}`,
       value: data.phoneNumber,
@@ -50,16 +64,81 @@ const row = [
     },
   ],
 
+
 ]
 
 const PrintPage = () => {
   const day = new Date();
-  document.title = `高强强-前端开发工程师-${day.getFullYear()}.${day.getMonth() + 1}.${day.getDate()}`;
+  document.title = `高强强-高级前端开发工程师-${day.getFullYear()}.${day.getMonth() + 1}.${day.getDate()}`;
   data.birthTime
-  return (
-    <div className="w-screen  bg-[#e3e3e3] text-[#333] pt-[12vh] pb-[20vh] print:py-0 print-color-adjust-exact">
-      <div className=" relative w-[21cm] px-8 print:px-0 min-h-[29.7cm] bg-white mx-auto shadow-sm print:shadow-none rounded print:rounded-none ">
-        <Button className='print:hidden -translate-y-full' onClick={window.print}>打印</Button>
+  return (<>
+    <div className="w-screen flex flex-col  bg-[#e3e3e3] text-[#333] pb-[20vh] print:py-0 print-color-adjust-exact">
+      <nav className="sticky print:hidden top-0 z-10 shadow-md w-full bg-white mb-10 flex flex-wrap items-center justify-between gap-4">
+        <div className="max-w-[21cm] mx-auto w-full p-2 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <a href="/" className="flex items-center justify-center bg-black text-white h-9 w-9 rounded">Q</a>
+            ·
+            <span className="text-sm font-bold">简历</span>
+
+          </div>
+          <div className="flex items-center gap-2">
+
+            <ul className="flex gap-1 text-sm">
+              <li>
+                <a
+                  href="#skills"
+                  className="rounded-md px-3 py-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                >
+                  技能
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#experience"
+                  className="rounded-md px-3 py-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                >
+                  经历
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#projects"
+                  className="rounded-md px-3 py-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                >
+                  项目
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#other-projects"
+                  className="rounded-md px-3 py-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                >
+                  其他
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#education"
+                  className="rounded-md px-3 py-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                >
+                  教育
+                </a>
+              </li>
+
+            </ul>
+            <Button
+              onClick={() => window.print()}
+              size="sm"
+            >
+              下载 PDF
+            </Button>
+          </div>
+
+        </div>
+      </nav>
+
+      <div className=" relative w-[21cm] px-8 print:px-0  min-h-[29.7cm] bg-white mx-auto shadow-sm print:shadow-none rounded print:rounded-none ">
         <div className='px-[.2cm]'>
           <div className="text-center">
             <h2 className='py-2 font-semibold tracking-tight text-3xl'>{data.name}</h2>
@@ -94,7 +173,7 @@ const PrintPage = () => {
 
           </div>
         </div>
-        <div className="">
+        <div className="" id="skills">
           <section className='py-2'>
             <h2 className="py-2 font-medium text-2xl">技术栈</h2>
             <div className="  text-[13px] leading-5.25 flex flex-wrap gap-2 text-muted-foreground">
@@ -116,7 +195,7 @@ const PrintPage = () => {
               <h2 className="py-2 font-semibold tracking-tight text-2xl">工作经历</h2>
             </header>
             <div className="space-y-4">
-              {
+              {/* {
                 workData.workExperience.map((item, index) => {
                   return <div key={index} className="bg-card text-card-foreground">
                     <div className="flex flex-col py-3 space-y-2">
@@ -140,6 +219,34 @@ const PrintPage = () => {
                     </div>
                   </div>
                 })
+              } */}
+              {
+                newData.work.map((item, index) => {
+                  return <div key={index} className="bg-card text-card-foreground">
+                    <div className="flex flex-col py-3 space-y-2">
+                      <div className="flex flex-wrap items-baseline justify-between gap-2">
+                        <div className='flex gap-1 items-center'>
+                          <h3 className="font-semibold tracking-tight text-xl">{item.company}</h3>·
+                          <p className="text-muted-foreground text-sm uppercase tracking-[0.16em]">{item.title}</p>
+                        </div>
+                        <span className="text-sm text-muted-foreground">{item.start}  – {item.end}</span>
+                      </div>
+                    </div>
+                    <div className="py-3 text-sm leading-relaxed text-muted-foreground">
+                      {item.context}
+                    </div>
+                    <div className="pb-3">
+                      <ul className="space-y-2.5">
+                        {item.highlights.map((r, i) => (
+                          <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground" aria-hidden="true"></span>
+                            <span>{r}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                })
               }
             </div>
           </section>
@@ -148,7 +255,7 @@ const PrintPage = () => {
               <h2 className="py-2 font-semibold tracking-tight text-2xl">项目经验</h2>
             </header>
             <div className="grid gap-4">
-              {
+              {/* {
                 workData.workExperience.map((work) => {
                   if (work.projectExperience) {
                     return work.projectExperience.map((item, index) => {
@@ -177,16 +284,45 @@ const PrintPage = () => {
                       </div>
                     })
                   }
+                })} */}
+              {
+                newData.projects.map((work, index) => {
+                  return <div key={index} className="text-card-foreground  ">
+                    <div className="flex flex-col py-3">
+                      <div className="flex flex-wrap items-baseline justify-between gap-2">
+                        <h3 className="font-semibold tracking-tight text-xl">{work.name}</h3>
+                        <span className="text-sm text-muted-foreground">{work.start}  – {work.end}</span>
+
+                      </div>
+                    </div>
+                    <div className="py-3 text-sm leading-relaxed text-muted-foreground">
+                      {work.description}
+                    </div>
+                    <div className="py-3 pt-0">
+                      <ul className="space-y-2.5">
+                        {work.highlights.map((r, i) => (
+                          <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground" aria-hidden="true"></span>
+                            <span>{r}</span>
+                          </li>
+                        ))}
+                        <div className="text-sm text-muted-foreground">
+                          <span className='font-medium text-card-foreground'>技术栈：</span>
+                          {work.techStack.join(" / ")}
+                        </div>
+                      </ul>
+                    </div>
+                  </div>
                 })}
             </div>
           </section>
-          <section id="projects">
+          <section id="other-projects">
             <header className="pb-2">
               <h2 className="py-2 font-semibold tracking-tight text-2xl">开源项目</h2>
             </header>
             <div className="grid gap-4">
               {
-                workData.openProject.map((item, index) => {
+                newData.openSource.map((item, index) => {
                   return <div key={index} className="text-card-foreground  ">
                     <div className="flex flex-col py-3">
                       <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -200,7 +336,7 @@ const PrintPage = () => {
                     <div className="py-3 pt-1">
                       <span className='text-sm font-medium text-card-foreground'>主要职责：</span>
                       <ul className="space-y-2.5">
-                        {item.responsibilities.map((r, i) => (
+                        {item.highlights.map((r, i) => (
                           <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
                             <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground" aria-hidden="true"></span>
                             <span>{r}</span>
@@ -220,6 +356,7 @@ const PrintPage = () => {
         </div>
       </div>
     </div>
+  </>
 
   );
 }

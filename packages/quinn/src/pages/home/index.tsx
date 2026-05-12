@@ -8,10 +8,6 @@ const baseInfo = [
   { label: "工作年限", value: dayjs().diff(new Date(data.workStartTime), "y") + "年工作经验" },
   { label: "年龄", value: dayjs().diff(new Date(data.birthTime), "y") + "岁" },
   { label: "期望岗位", value: data.job },
-  { label: "到岗时间", value: "随时到岗" },
-]
-// 
-const contactInfo = [
   { label: "电话", value: data.phoneNumber, href: `tel:${data.phoneNumber}` },
   { label: "邮箱", value: data.email, href: `mailto:${data.email}` },
   { label: "GitHub", value: data.githubSite, href: `//${data.githubSite}` },
@@ -20,10 +16,12 @@ const contactInfo = [
 function App() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="max-w-7xl container pb-16 pt-8 sm:pb-24 mx-auto">
+      <div className="max-w-6xl container pb-16 pt-8 sm:pb-24 mx-auto">
         <header className="rounded-xl sm:border bg-card p-6 md:p-10">
           <nav className="mb-10 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center justify-center bg-black text-white h-9 w-9 rounded">Q</div>
+            <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center bg-black text-white h-9 w-9 rounded">Q</div>
+            </div>
             <ul className="flex gap-1 text-sm">
               <li>
                 <a
@@ -57,14 +55,14 @@ function App() {
                   教育
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a
                   href="/cv"
                   className="rounded-md px-3 py-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
                 >
                   简历
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a
                   href="//blog.qiangqiang.work"
@@ -85,6 +83,10 @@ function App() {
               <p className="mt-4 leading-7 text-muted-foreground">
                 {data.desc}
               </p>
+              <div className="pt-3">
+                <Button asChild><a href="./cv">PDF 简历 / 下载</a></Button>
+              </div>
+
             </section>
             <aside className="flex flex-col gap-4">
               <div className="rounded-xl border border-border/80 bg-card text-card-foreground shadow-sm flex flex-col space-y-1.5 p-6">
@@ -100,20 +102,6 @@ function App() {
                   </ul>
                 </div>
               </div>
-              <div className="rounded-xl border border-border/80 bg-card text-card-foreground shadow-sm flex flex-col space-y-1.5 p-6">
-                <h2 className="text-xl font-semibold leading-none tracking-tight pb-6">联系方式</h2>
-                <div>
-                  <ul className=" space-y-2 text-sm">
-                    {
-                      contactInfo.map(item => <li key={item.label} className="flex justify-between py-1 border-b">
-                        <label className="text-muted-foreground">{item.label}</label>
-                        <a href={item.href} className="hover:underline">{item.value}</a>
-                      </li>)
-                    }
-                  </ul>
-                </div>
-              </div>
-              <Button>联系我</Button>
             </aside>
           </div>
         </header>
