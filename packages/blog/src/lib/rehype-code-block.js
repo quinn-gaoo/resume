@@ -77,7 +77,32 @@ export default function rehypeCodeBlock() {
                 tagName: "button",
                 properties: {
                   className: ["copy-btn"],
-                  onclick: `navigator.clipboard.writeText(${JSON.stringify(codeContent)}).then(() => { this.classList.add('copied'); setTimeout(() => this.classList.remove('copied'), 2000); })`,
+                  onclick: `(function(btn, text) {
+                    var textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    textarea.style.cssText = 'position:fixed;top:0;left:0;width:2em;height:2em;padding:0;border:none;outline:none;box-shadow:none;background:transparent;';
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    textarea.setSelectionRange(0, 99999);
+                    var success = false;
+                    try {
+                      success = document.execCommand('copy');
+                    } catch (e) {
+                      console.error('Copy failed:', e);
+                    }
+                    document.body.removeChild(textarea);
+                    if (success) {
+                      btn.classList.add('copied');
+                      var span = btn.querySelector('span');
+                      if (span) span.textContent = 'Copied!';
+                      setTimeout(function() {
+                        btn.classList.remove('copied');
+                        if (span) span.textContent = 'Copy';
+                      }, 2000);
+                    } else {
+                      alert('Copy failed. Please copy manually.');
+                    }
+                  })(this, ${JSON.stringify(codeContent)})`,
                   title: "Copy code",
                 },
                 children: [

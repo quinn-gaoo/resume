@@ -2,7 +2,7 @@
 title: "Promise详解"
 date: "2023-05-11"
 category: "学习笔记"
-tags: \["javascript", "Promise"]
+tags: ["javascript", "Promise"]
 description: "深入理解Promise的原理、实现和应用场景。"
 ---
 
@@ -49,17 +49,201 @@ ES6 提供了一套API, 实现了 Promise A+ 规范
 
 <br />
 
-| 方法                         | 描述                                                                                                                                               |
-| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Promise.resolve(data)        | 将一个成功状态的Promise对象返回                                                                                                                    |
-| Promise.reject(reason)       | 将一个失败状态的Promise对象返回                                                                                                                    |
-| Promise.all(任务数组)        | 返回一个任务，任务数组全部成功则成功,数据为数组，任何一个失败则失败                                                                                |
-| Promise.any(任务数组)        | 返回一个任务，任务数组任意一个成功则成功,数据为成功的任务数据，全部失败则失败                                                                      |
-| Promise.allSettled(任务数组) | 将多个Promise对象包装成一个新的Promise对象，当所有Promise对象都成功时，新的Promise对象也成功，当任意一个Promise对象失败时，新的Promise对象也失败   |
-| Promise.race(任务数组)       | 将多个Promise对象包装成一个新的Promise对象，当任意一个Promise对象成功时，新的Promise对象也成功，当任意一个Promise对象失败时，新的Promise对象也失败 |
+| 方法                   | 描述                                                                                                                                |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Promise.resolve(data)  | 将一个成功状态的Promise对象返回                                                                                                     |
+| Promise.reject(reason) | 将一个失败状态的Promise对象返回                                                                                                     |
+| Promise.all([])        | 返回一个任务数组，<br>全部成功则成功,数据为数组<br>任何一个失败则失败,数据为失败的任务数据                                          |
+| Promise.any([])        | 任一成功 → 该成功值 <br> 全部失败报错提示 `AggregateError: All promises were rejected`                                              |
+| Promise.allSettled([]) | 全部完成（不论成功/失败） 返回数据格式 <br> `[{"status": "rejected","reason": 1},{"status": "fulfilled","value": 2}]` ,没有失败情况 |
+| Promise.race([])       | 返回最先处理好的任务，状态为最先                                                                                                    |
 
-<br />
+### 消除回调
 
-<br />
+有了Promise 异步任务有了统一的处理方式
+有了统一的处理方式，ES官方就可以对其进一步优化
+ES7 提供了 async/await 语法糖，进一步简化了异步代码的编写
+`async` 函数的返回值是一个 Promise 对象，`await` 关键字 后面的表达式，必须是一个 Promise 对象，否则会报错
 
-<br />
+## 练习题
+
+1. 练习1
+
+```javascript
+const promise = new Promise((resolve, reject) => {
+  console.log(1);
+  resolve();
+  console.log(2);
+});
+promise.then(() => {
+  console.log(3);
+});
+console.log(4);
+```
+
+> 1 2 3 4
+
+```javascript
+const promise = new Promise((resolve, reject) => {
+  console.log(1);
+  setTimeout(() => {
+    console.log(2);
+    resolve();
+    console.log(3);
+  }, 0);
+});
+
+promise.then(() => {
+  console.log(4);
+});
+console.log(5);
+```
+
+> 1 5 2 3 4
+
+2. 练习2
+
+```javascript
+Promise.resolve()
+  .then(() => {
+    console.log(0);
+    return Promise.resolve(4);
+  })
+  .then((res) => console.log(res));
+
+Promise.resolve()
+  .then(() => console.log(1))
+  .then(() => console.log(2))
+  .then(() => console.log(3))
+
+  .then(() => console.log(5))
+  .then(() => console.log(6));
+```
+
+> 0, 1, 2, 3, 4, 5, 6
+
+```javascript
+async function m() {
+  const n = await 1;
+  console.log(n);
+}
+m();
+console.log(2);
+```
+
+> 2, 1
+
+```javascript
+async function m() {
+  console.log(0);
+  const n = await 1;
+  console.log(n);
+}
+(async () => {
+  await m();
+  console.log(2);
+})();
+console.log(3);
+```
+
+> 0, 3, 1, 2
+
+```javascript
+async function m1() {
+  return 1;
+}
+async function m2() {
+  const n = await m1();
+  console.log(n);
+  return 2;
+}
+async function m3() {
+  const n = m2();
+  console.log(n);
+  return 3;
+}
+m3().then((n) => console.log(n));
+m3();
+console.log(4);
+```
+
+> promise:pending, promise:pending, 4, 1, 3, 1
+
+```javascript
+var a;
+var b = new Promise((resolve) => {
+  console.log("promise1");
+  setTimeout(() => {
+    resolve();
+  }, 1000);
+})
+  .then(() => {
+    console.log("promise2");
+  })
+  .then(() => {
+    console.log("promise3");
+  })
+  .then(() => {
+    console.log("promise4");
+  });
+
+a = new Promise(async (resolve) => {
+  console.log(a);
+  await b;
+  console.log(a);
+  console.log("after1");
+  await a;
+  resolve(true);
+  console.log("after2");
+});
+console.log("end");
+```
+
+> promise1, undefined, end, promise2, promise3, promise4, promise:pending
+
+```javascript
+async function m1() {
+  return 1;
+}
+async function m2() {
+  const n = await m1();
+  console.log(n);
+  return 2;
+}
+async function m3() {
+  const n = await m2();
+  console.log(n);
+  return 3;
+}
+m3().then((n) => console.log(n));
+m3();
+console.log(4);
+```
+
+> 4,1, 1, 2, 2, 3
+
+```javascript
+async function async1() {
+  console.log("async1 start");
+  await async2();
+  console.log("async1 end");
+}
+async function async2() {
+  console.log("async2");
+}
+
+console.log("script start");
+setTimeout(() => {
+  console.log("setTimeout");
+}, 0);
+async1();
+new Promise((resolve) => {
+  console.log("promise1");
+  resolve();
+}).then(() => {
+  console.log("promise2");
+});
+console.log("script end");
+```
+
+> script start , async1 start , async2 , promise1 script end, async1 end, promise2 setTimeout

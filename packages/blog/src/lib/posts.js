@@ -5,6 +5,7 @@ import { remark } from "remark";
 import remarkRehype from "remark-rehype";
 import rehypeHighlight from "rehype-highlight";
 import rehypeStringify from "rehype-stringify";
+import rehypeRaw from "rehype-raw";
 import gfm from "remark-gfm";
 import rehypeCodeBlock from "./rehype-code-block";
 import { extractHeadings, addHeadingIds } from "./headings";
@@ -90,7 +91,8 @@ export async function getPostData(slug) {
 
   const processedContent = await remark()
     .use(gfm)
-    .use(remarkRehype)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
     .use(rehypeHighlight, { ignoreMissing: true })
     .use(rehypeCodeBlock)
     .use(rehypeStringify)
