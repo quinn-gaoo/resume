@@ -247,3 +247,223 @@ console.log("script end");
 ```
 
 > script start , async1 start , async2 , promise1 script end, async1 end, promise2 setTimeout
+
+## 手写Promise
+
+```javascript
+const PENDING = "pending";
+const FULFILLED = "fulfilled";
+const REJECTED = "rejected";
+
+const runMicroTask = (task) => {
+  // node 环境
+  if (process.nextTick) {
+    return process.nextTick(task);
+  }
+  // 浏览器环境
+  if (window.queueMicrotask) {
+    return window.queueMicrotask(task);
+  }
+  // 其他环境
+  return setTimeout(task, 0);
+};
+
+const isLikePromise = (promise) => {
+  return (
+    promise && typeof promise === "object" && typeof promise.then === "function"
+  );
+};
+
+const isPromise = (promise) => {
+  return promise instanceof MyPromise;
+};
+
+class MyPromise {
+  _state = PENDING;
+  _value = undefined;
+  #tasks = [];
+  constructor(executor) {
+    try {
+      executor(this._resolve.bind(this), this._reject.bind(this));
+    } catch (error) {
+      this._reject(error);
+    }
+  }
+
+  #changeState(state, value) {
+    if (this._state !== PENDING) return;
+    this._state = state;
+    this._value = value;
+    this.#runTasks();
+  }
+  _resolve(value) {
+    this.#changeState(FULFILLED, value);
+  }
+  _reject(reason) {
+    this.#changeState(REJECTED, reason);
+  }
+
+  #runTasks() {
+    if (this._state === PENDING) return;
+
+    while (this.#tasks[0]) {
+      const task = this.#tasks.shift();
+      this.#runOneTask(task);
+    }
+  }
+  #runOneTask({ onFulfilled, onRejected, resolve, reject }) {
+    runMicroTask(() => {
+      let executor;
+      if (this._state === FULFILLED) {
+        executor = onFulfilled;
+      } else if (this._state === REJECTED) {
+        executor = onRejected;
+      }
+
+      if (typeof executor !== "function") {
+        if (this._state === FULFILLED) {
+          resolve(this._value);
+        } else {
+          reject(this._value);
+        }
+        return;
+      }
+
+      try {
+        const result = executor(this._value);
+        if (isLikePromise(result)) {
+          result.then(resolve, reject);
+        } else {
+          if (this._state === FULFILLED) {
+            resolve(result);
+          } else {
+            reject(result);
+          }
+        }
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+  then(onFulfilled, onRejected) {
+    return new MyPromise((resolve, reject) => {
+      this.#tasks.push({
+        onFulfilled,
+        onRejected,
+        resolve,
+        reject,
+      });
+      this.#runTasks();
+    });
+  }
+  cache(onRejected) {
+    return this.then(null, onRejected);
+  }
+  finally(onFinally) {
+    return this.then(
+      (data) => {
+        onFinally();
+        return data;
+      },
+      (err) => {
+        onFinally();
+        throw err;
+      },
+    );
+  }
+}
+```
+
+### 手写Promise.resolve
+
+```javascript
+Promise.resolve = (reason) => {
+  if (isPromise(data)) {
+    return data;
+  }
+  return new MyPromise((resolve, reject) => {
+    if (isLikePromise(data)) {
+      data.then(resolve, reject);
+    } else {
+      resolve(data);
+    }
+  });
+};
+```
+
+### 手写Promise.reject
+
+```javascript
+Promise.reject = (reason) => {
+  return new MyPromise((resolve, reject) => {
+    reject(reason);
+  });
+};
+```
+
+### 手写Promise.all
+
+```javascript
+MyPromise.all = (promises) => {
+  return new MyPromise((resolve, reject) => {
+    const results = [];
+    let count = 0;
+    for (const promise of promises) {
+      MyPromise.resolve(promise).then((data) => {
+        results[count] = data;
+        count++;
+        if (count === promises.length) {
+          resolve(results);
+        }
+      });
+    }
+  });
+};
+```
+
+### 手写Promise.allSettled
+
+```javascript
+MyPromise.allSettled = (promises) => {
+  return new MyPromise((resolve, reject) => {
+    const results = [];
+    let count = 0;
+    for (const promise of promises) {
+      MyPromise.resolve(promise).then(
+        (data) => {
+          results[count] = {
+            status: "fulfilled",
+            value: data,
+          };
+          count++;
+          if (count === promises.length) {
+            resolve(results);
+          }
+        },
+        (err) => {
+          results[count] = {
+            status: "rejected",
+            reason: err,
+          };
+          count++;
+          if (count === promises.length) {
+            resolve(results);
+          }
+        },
+      );
+    }
+  });
+};
+```
+
+### 手写Promise.race
+
+```javascript
+MyPromise.race = (promises) => {
+  return new MyPromise((resolve, reject) => {
+    for (const promise of promises) {
+      MyPromise.resolve(promise).then(resolve, reject);
+    }
+  });
+};
+```
