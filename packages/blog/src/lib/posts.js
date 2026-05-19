@@ -11,22 +11,42 @@ import { extractHeadings, addHeadingIds } from "./headings";
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
 
-export function getAllPosts() {
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames
-    .filter((fileName) => fileName.endsWith(".md"))
-    .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, "");
-      const fullPath = path.join(postsDirectory, fileName);
+function collectPosts(dir, parentPath = "") {
+  let posts = [];
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    const relativePath = parentPath
+      ? `${parentPath}/${entry.name}`
+      : entry.name;
+
+    if (entry.isDirectory()) {
+      posts = posts.concat(collectPosts(fullPath, relativePath));
+    } else if (entry.isFile() && entry.name.endsWith(".md")) {
+      // 使用 @ 替换路径中的 /，避免 URL 路由冲突
+      const slug = relativePath.replace(/\.md$/, "").replace(/\//g, "@");
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const { data, content } = matter(fileContents);
 
-      return {
+      // 从目录路径推断 category（去掉文件名）
+      const dirPath = relativePath.replace(/\/[^/]+$/, "");
+      const inferredCategory = dirPath || "未分类";
+
+      posts.push({
         slug,
         content,
+        category: data.category || inferredCategory,
         ...data,
-      };
-    });
+      });
+    }
+  }
+
+  return posts;
+}
+
+export function getAllPosts() {
+  const allPostsData = collectPosts(postsDirectory);
 
   return allPostsData.sort((a, b) => {
     if (a.date < b.date) {
@@ -38,7 +58,9 @@ export function getAllPosts() {
 }
 
 export function getPostBySlug(slug) {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  // 将 slug 中的 @ 还原为 / 以找到实际文件
+  const actualPath = slug.replace(/@/g, "/");
+  const fullPath = path.join(postsDirectory, `${actualPath}.md`);
 
   if (!fs.existsSync(fullPath)) {
     return null;
@@ -47,9 +69,14 @@ export function getPostBySlug(slug) {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
+  // 从实际路径推断 category
+  const dirPath = actualPath.replace(/\/[^/]+$/, "");
+  const inferredCategory = dirPath || "未分类";
+
   return {
     slug,
     content,
+    category: data.category || inferredCategory,
     ...data,
   };
 }
@@ -78,11 +105,29 @@ export async function getPostData(slug) {
   };
 }
 
+function collectSlugs(dir, parentPath = "") {
+  let slugs = [];
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    const relativePath = parentPath
+      ? `${parentPath}/${entry.name}`
+      : entry.name;
+
+    if (entry.isDirectory()) {
+      slugs = slugs.concat(collectSlugs(fullPath, relativePath));
+    } else if (entry.isFile() && entry.name.endsWith(".md")) {
+      // 使用 @ 替换路径中的 /，避免 URL 路由冲突
+      slugs.push(relativePath.replace(/\.md$/, "").replace(/\//g, "@"));
+    }
+  }
+
+  return slugs;
+}
+
 export function getAllSlugs() {
-  const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames
-    .filter((fileName) => fileName.endsWith(".md"))
-    .map((fileName) => fileName.replace(/\.md$/, ""));
+  return collectSlugs(postsDirectory);
 }
 
 export function getAllCategories() {
