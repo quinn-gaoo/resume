@@ -100,13 +100,13 @@ export default function Template1() {
           <section className='py-2'>
             <h2 className="py-2 font-medium text-2xl text-[#07132b]">技术栈</h2>
             <div className=" text-sm text-[#617185] leading-7 flex flex-wrap gap-2">
-              <p><span className="font-medium text-[#333]">框架方向：</span> 深度掌握 Vue 2/3 与 React 运行时原理（响应式系统、Fiber 架构、Diff 算法差异），主导过双框架大型项目的技术选型与迁移。熟练设计状态管理方案（Pinia/Vuex、Redux/Zustand），能够基于业务特征选择合适的技术范式</p>
-              <p><span className="font-medium text-[#333]">AI 能力：</span>将 Claude Code/Cursor/Codex 深度集成至研发工作流，构建 AI 辅助编码规范与 Code Review 流水线。掌握 RAG 检索增强与 LangChain 应用框架，具备将 LLM 能力产品化并嵌入业务链路的设计经验。
+              <p><span className="font-medium text-[#333]">框架方向：</span> 深度掌握 Vue 2/3 与 React 运行时原理（响应式系统、Fiber 架构、Diff 算法差异），熟悉状态管理方案（Pinia/Vuex、Redux/Zustand），能够基于业务特征选择合适的技术范式。</p>
+              <p><span className="font-medium text-[#333]">AI 能力：</span>将 AI 编程工具（Claude Code、Cursor、Codex... ）集成至日常开发工作流中。了解AI 技术如：RAG, MCP, Skill等,有一定的Rag 知识库开发经验。
               </p>
               <p><span className="font-medium text-[#333]">性能优化：</span> 掌握前端常见性能优化手段，包括代码分割、 懒加载、 资源优化等技术，显著降低FCP（First Contentful Paint）和LCP（Largest Contentful Paint）时间，提升用户交互体验。</p>
               <p><span className="font-medium text-[#333]">架构搭建：</span> 拥有自定义脚手架的能力，可根据需求从0到1搭建整个monorepo/multirepo项目，并自定义构建流程和打包优化。  </p>
               <p><span className="font-medium text-[#333]">单元测试：</span> 掌握Jest、Vitest等前端测试框架，以及Python的自动化测试工具AirTest。针对公共模块能够编写出高覆盖率的测试用例，提升代码健壮性。  </p>
-              <p><span className="font-medium text-[#333]">全栈技术：</span> 使用 Node.js（Express/Koa/Next.js/Nuxt.js）设计 RESTful API 与 SSR 同构应用，具备 Golang/Python 多语言协作经验。熟悉关系型（MySQL/PostgreSQL）与非关系型（MongoDB）数据库设计，能够完成业务数据建模与性能调优</p>
+              <p><span className="font-medium text-[#333]">全栈技术：</span> 能够基于 Node.js（Express/Koa）设计 RESTful API，并利用 Next.js/Nuxt.js 实现 SSR 同构应用。在数据层，使用 MySQL/PostgreSQL 与 MongoDB 完成业务数据建模。同时具备 Golang/Python 基础，能够参与跨语言技术方案沟通</p>
             </div>
           </section>
 
