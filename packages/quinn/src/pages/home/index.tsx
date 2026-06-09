@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import data from '@/data/personal-details.json'
 import workData from '@/data/work-data.json'
 import dayjs from "dayjs";
+import { toast } from "sonner";
+
+
 
 const baseInfo = [
   { label: "工作年限", value: dayjs().diff(new Date(data.workStartTime), "y") + "年工作经验" },
@@ -85,6 +88,7 @@ function App() {
               </p>
               <div className="pt-3">
                 <Button asChild><a href="./cv">PDF 简历 / 下载</a></Button>
+                <Button onClick={() => toast.success("联系已发送", { duration: 200000000 })}>联系我</Button>
               </div>
 
             </section>

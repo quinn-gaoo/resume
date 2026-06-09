@@ -190,14 +190,14 @@ function ProjectItem({ project }: any) {
         <span className="text-sm text-muted-foreground">{project.start}  – {project.end}</span>
       </div>
     </div>
-    <div className="py-3 text-sm leading-7 text-muted-foreground">
+    <div className="py-3 text-sm leading-7 text-[#617185]">
       {project.description}
     </div>
     <div className="py-3 pt-0">
       <ul className="space-y-2.5">
         {project.highlights.map((r: any, i: any) => (
-          <li key={i} className="flex gap-2.5 text-sm leading-7 text-muted-foreground">
-            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground" aria-hidden="true"></span>
+          <li key={i} className="flex gap-2.5 text-sm leading-7 text-[#617185]">
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#07132b]" aria-hidden="true"></span>
             <span>{r}</span>
           </li>
         ))}
@@ -218,14 +218,14 @@ function OpenProjectItem({ project }: { project: any }) {
         {/* <a href={project.url} className="text-sm text-muted-foreground">项目预览</a> */}
       </div>
     </div>
-    <p className="py-3 text-sm leading-7 text-muted-foreground">
+    <p className="py-3 text-sm leading-7 text-[#617185]">
       {project.description}
     </p>
     <div className="py-3 pt-1">
       <ul className="space-y-2.5">
         {project.highlights.map((r: any, i: any) => (
-          <li key={i} className="flex gap-2.5 text-sm leading-7 text-muted-foreground">
-            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground" aria-hidden="true"></span>
+          <li key={i} className="flex gap-2.5 text-sm leading-7 text-[#617185]">
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#07132b]" aria-hidden="true"></span>
             <span>{r}</span>
           </li>
         ))}
