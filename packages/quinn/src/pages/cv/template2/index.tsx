@@ -1,7 +1,6 @@
 import dayjs from 'dayjs'
 import data from './data.json'
 import { PiPhoneFill, PiGithubLogoFill, PiEnvelopeFill, PiGlobeFill, PiNotebookFill, PiWechatLogoFill } from "react-icons/pi";
-import Education from '../components/education';
 import newData from './data.json'
 
 
@@ -96,32 +95,32 @@ export default function Template1() {
             <h2 className="py-2 pt-1 font-medium text-xl">技术栈</h2>
             <ul className=" text-sm leading-7 flex flex-wrap gap-2   text-[#2b405b]">
               <li className="">
-                <span className="inline-block px-2 rounded-3xl font-bold mr-1 bg-muted">框架能力</span>
+                <span className="inline-block px-2.5 rounded-3xl font-bold mr-1 bg-[#dde1987a] leading-5">框架能力</span>
                 深度掌握 Vue 2/3 与 React 运行时原理，理解响应式系统、Fiber 架构、Diff 算法差异等，熟悉状态管理方案（Pinia/Vuex、Redux/Zustand），能够基于业务特征选择合适的技术范式。熟悉Next.js/Nuxt.js 的 SSR 开发经验，熟悉其架构和最佳实践。
               </li>
 
               <li>
-                <span className="inline-block px-1.5 rounded font-bold mr-1 bg-muted">性能优化</span>
+                <span className="inline-block px-2.5 rounded-3xl font-bold mr-1 bg-[#dde1987a] leading-5">性能优化</span>
                 掌握前端常见性能优化手段，包括代码分割、 懒加载、 资源优化、SSR 服务端渲染 、缓存优化、图片压缩、资源合并等技术，显著降低FCP和LCP时间，提升用户交互体验。
               </li>
               <li>
-                <span className="inline-block px-1.5 rounded font-bold mr-1 bg-muted">工程能力</span>
+                <span className="inline-block px-2.5 rounded-3xl font-bold mr-1 bg-[#dde1987a] leading-5">工程能力</span>
                 掌握主流构建工具（如：Vite、Webpack、Rollup等）了解不同工具核心原理以及差异，并拥有自定义脚手架的能力，能根据需求从0到1搭建monorepo/multirepo 仓库项目，有自定义构建流程CI/CD和打包优化的能力，更具项目添加服务监控和日志分析能力。
               </li>
               <li>
-                <span className="inline-block px-1.5 rounded font-bold mr-1 bg-muted">后段能力</span>
+                <span className="inline-block px-2.5 rounded-3xl font-bold mr-1 bg-[#dde1987a] leading-5">后段能力</span>
                 熟悉 Node.js及 Express/Koa 框架，能够设计出符合 RESTful API 风格的接口层以及 BFF 服务的落地实现。了解后端数据库（如PostgreSQL、MongoDB等）和缓存（如Redis等）,能够设计简单数据库模型，进行数据CRUD操作。
               </li>
               <li>
-                <span className="inline-block px-1.5 rounded font-bold mr-1 bg-muted">测试能力</span>
+                <span className="inline-block px-2.5 rounded-3xl font-bold mr-1 bg-[#dde1987a] leading-5">测试能力</span>
                 掌握Jest、Vitest等前端测试框架，有Python的自动化测试工具AirTest使用经验。针对公共模块能够编写出高覆盖率的测试用例，提升代码健壮性。
               </li>
               <li>
-                <span className="inline-block px-1.5 rounded font-bold mr-1 bg-muted">AI能力</span>
+                <span className="inline-block px-2.5 rounded-3xl font-bold mr-1 bg-[#dde1987a] leading-5">AI能力</span>
                 将 AI 编程工具（Claude Code、Cursor、Codex... ）集成至日常开发工作流中。了解AI 技术如：RAG, MCP, Skill等,有一定Rag 知识库和Mcp工具开发经验。
               </li>
               <li>
-                <span className="inline-block px-1.5 rounded font-bold mr-1 bg-muted">前端基础</span>
+                <span className="inline-block px-2.5 rounded-3xl font-bold mr-1 bg-[#dde1987a] leading-5">前端基础</span>
                 拥有扎实的HTML、CSS、JavaScript基础，针对部分前端核心知识有深入研究，心得发布博客平台。熟练掌握Typescript,并在大型项目中能能够利用Typescript 进行了类型检查和代码优化，提升代码的可维护性和可靠性。
               </li>
             </ul>
@@ -255,3 +254,33 @@ function OpenProjectItem({ project }: { project: any }) {
   </div>
 }
 
+
+
+function Education() {
+  return <section id="education">
+    <header className="pt-2">
+      <h2 className=" py-2 font-semibold text-xl text-[#07132b]">教育经历</h2>
+    </header>
+    <div>
+      <div className="rounded-xl text-card-foreground ">
+        <div className="flex flex-col py-3 space-y-2">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <div className="flex flex-row items-center gap-1">
+              <h3 className="font-semibold tracking-tight text-[18px]">长春工业大学</h3>·
+              <p className="text-muted-foreground text-sm uppercase tracking-[0.16em]">计算机信息管理</p>
+            </div>
+            <span className="text-sm text-muted-foreground">2016-2019</span>
+          </div>
+        </div>
+        <div className="py-3 pt-0">
+          <ul className="space-y-2.5">
+
+            <li className="flex gap-2.5 text-sm leading-relaxed text-[#2b405b]">
+              主修课程：数据结构、计算机网络、操作系统、数据库原理、编译原理等
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+}
