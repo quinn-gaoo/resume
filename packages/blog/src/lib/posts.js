@@ -34,12 +34,23 @@ function collectPosts(dir, parentPath = "") {
       const dirPath = relativePath.replace(/\/[^/]+$/, "");
       const inferredCategory = dirPath || "未分类";
 
-      posts.push({
+      // 将 Date 对象转换为字符串，以便 JSON 序列化
+      const postData = {
         slug,
         content,
         category: data.category || inferredCategory,
         ...data,
-      });
+      };
+      
+      // 统一日期格式为 YYYY-MM-DD
+      if (postData.date) {
+        const date = new Date(postData.date);
+        if (!isNaN(date.getTime())) {
+          postData.date = date.toISOString().split('T')[0]; // "2026-06-09"
+        }
+      }
+      
+      posts.push(postData);
     }
   }
 
@@ -74,12 +85,23 @@ export function getPostBySlug(slug) {
   const dirPath = actualPath.replace(/\/[^/]+$/, "");
   const inferredCategory = dirPath || "未分类";
 
-  return {
+  // 将 Date 对象转换为字符串，以便 JSON 序列化
+  const result = {
     slug,
     content,
     category: data.category || inferredCategory,
     ...data,
   };
+  
+  // 统一日期格式为 YYYY-MM-DD
+  if (result.date) {
+    const date = new Date(result.date);
+    if (!isNaN(date.getTime())) {
+      result.date = date.toISOString().split('T')[0];
+    }
+  }
+  
+  return result;
 }
 
 export async function getPostData(slug) {

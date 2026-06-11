@@ -1,7 +1,5 @@
 import { Button } from '@/components/ui/button';
-import Template1 from './template1'
-
-
+import Template2 from './template2'
 
 const PrintPage = () => {
 
@@ -72,7 +70,7 @@ const PrintPage = () => {
         </div>
       </nav>
 
-      <Template1 />
+      <Template2 />
     </div>
   </>
 

@@ -179,13 +179,13 @@ export default function Home({ posts, categories }) {
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-muted-foreground">今日访问</span>
                     <span className="font-medium text-foreground">
-                      <span id="busuanzi_today_pv">-</span>
+                      <span id="busuanzi_today_pv" suppressHydrationWarning={true}>-</span>
                     </span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-muted-foreground">总访问量</span>
                     <span className="font-medium text-foreground">
-                      <span id="busuanzi_site_pv">-</span>
+                      <span id="busuanzi_site_pv" suppressHydrationWarning={true}>-</span>
                     </span>
                   </div>
                 </div>
