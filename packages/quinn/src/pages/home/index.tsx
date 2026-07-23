@@ -85,9 +85,9 @@ function App() {
               <p className="mt-4 leading-7 text-muted-foreground">
                 {data.desc}
               </p>
-              <div className="pt-3">
+              <div className="pt-3 space-x-2">
                 <Button asChild><a href="./cv">PDF 简历 / 下载</a></Button>
-                <Button onClick={() => toast.success("联系已发送", { duration: 200000000 })}>联系我</Button>
+                <Button onClick={() => window.open(`mailto:${data.email}`)}>联系我</Button>
               </div>
 
             </section>
