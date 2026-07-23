@@ -126,7 +126,7 @@ export default function Template1() {
               </li>
               <li>
                 <span className="inline-block px-2.5 rounded-3xl font-bold mr-1 bg-[#dde1987a] leading-5">AI能力</span>
-                将 AI 编程工具（Claude Code、Cursor、Codex... ）集成至日常开发工作流中。了解AI 相关技术如：RAG, MCP, Skill, Langchain 等。
+                将 AI 编程工具（Claude Code、Cursor、Codex... ）集成至日常开发工作流中。了解AI 相关技术如：RAG, MCP, Skill, LangChain 等。
               </li>
               {/* <li>
                 <span className="inline-block px-2.5 rounded-3xl font-bold mr-1 bg-[#dde1987a] leading-5">前端基础</span>
