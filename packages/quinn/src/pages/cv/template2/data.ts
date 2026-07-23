@@ -1,7 +1,7 @@
 const data = {
   "job": "前端开发工程师",
   "name": "高强强",
-  "desc": "6 年+ 前端经验，负责中大型系统的前端架构与核心功能开发，具备复杂工程化实践能力。同时具备企业级中后台、IM 与桌面端应用的核心开发经验，能够从 0 到 1 构建并持续优化复杂前端系统。有一定的AI 相关的前端开发经验。",
+  "desc": "6 年+ 前端经验，负责中大型系统的前端架构与核心功能开发，具备复杂工程化实践能力。同时具备企业级中后台、IM 系统与管理端应用的核心开发经验，能够从 0 到 1 构建并持续优化复杂前端系统。有一定的AI 相关的前端开发经验。",
   "workStartTime": "2019-12-01",
   "birthTime": "1997-02-27",
   "residence": "成都",
@@ -9,6 +9,48 @@ const data = {
   "email": "quinnn.gao@gmail.com",
   "githubSite": "github.com/quinn-gaoo",
   "site": "qiangqiang.work",
+  "skills": [
+    {
+      "title": "框架方向",
+      "desc": "精通Vue2/3、React 等现代前端框架，理解两个框架之间的核心原理以及差异，拥有两大框架开发多个大型项目的经验，对两大框架的周边生态（Vue Router、Pina、 VueX、 React Router 、 Redux、 Zustand）有一定的使用心得体会。"
+    },
+    {
+      "title": "AI 能力",
+      "desc": "具备 AI 驱动的前端工程化能力，熟练运用 Claude Code、Codex, Cursor, Trae 提效，同时掌握 RAG 及 LangChain 框架，能够将大模型能力落地于实际业务场景。"
+    },
+    {
+      "title": "性能优化",
+      "desc": "掌握前端常见性能优化手段，包括代码分割、 懒加载、 资源优化等技术，显著降低FCP（First Contentful Paint）和LCP（Largest Contentful Paint）时间，提升用户交互体验。"
+    },
+    {
+      "title": "架构搭建",
+      "desc": "拥有自定义脚手架的能力，可根据需求从0到1搭建整个monorepo/multirepo项目，并自定义构建流程和打包优化。"
+    },
+    {
+      "title": "单元测试",
+      "desc": "掌握Jest、Vitest等前端测试框架，以及Python的自动化测试工具AirTest。针对公共模块能够编写出高覆盖率的测试用例，提升代码健壮性。"
+    },
+    {
+      "title": "Web3方向",
+      "desc": "熟悉web3 生态，有 web3 前端开发相关经验，熟悉web3.js、ethers.js等前端库。 并和链上数据交互。"
+    },
+    {
+      "title": "后端能力",
+      "desc": "熟悉Node.js的后端框架（如Express、Koa、Next.js、Nuxt.js），了解Golang、Python其他后端语言。能够设计并实现Restful风格得API，做到前后端分离和SSR。"
+    },
+    {
+      "title": "数据结构和算法",
+      "desc": "熟练掌握数组、链表、树、图、哈希等常见结构，能用一线算法题目方法优化复杂度。"
+    },
+    {
+      "title": "数据库方向",
+      "desc": "了解基本SQL语句，以及Mysql、PostgreSQL,MonngoDB的使用，能够设计简单的数据库模型，进行数据CURD操作。"
+    },
+    {
+      "title": "DevOps 与自动化",
+      "desc": "熟悉 GitHub Actions/Jenkins CI、Docker 和云部署，编写部署脚本加速前端从开发到上线。"
+    }
+  ],
   "work": [
     {
       "company": "Polkadot Subsquare",

@@ -1,6 +1,6 @@
 import ProjectExperience from "@/components/business/home/ProjectExperience";
 import { Button } from "@/components/ui/button";
-import workData from '@/data/work-data.json'
+// import workData from '@/data/work-data.json'
 import dayjs from "dayjs";
 import { toast } from "sonner";
 import data from "../cv/template2/data";
@@ -116,7 +116,7 @@ function App() {
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 
               {
-                workData.skills.map((item, index) => {
+                data.skills.map((item, index) => {
                   return <div key={index} className="rounded-xl border border-border/80 bg-card text-card-foreground shadow-sm md:p-3">
                     <div className="flex flex-col p-3 space-y-2">
                       <div className="flex flex-wrap items-baseline justify-between gap-2">
