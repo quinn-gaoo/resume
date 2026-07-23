@@ -13,7 +13,10 @@
     {
       "companyName": "Polkadot Subsquare",
       "job": "前端工程师",
-      "timeRange": ["2025-03", "2026-01"],
+      "timeRange": [
+        "2025-03",
+        "2026-01"
+      ],
       "jobContent": [
         {
           "name": "Subsquare 主网",
@@ -33,35 +36,56 @@
           "desc": [
             "负责 Voting Space 与 Proposal 投票核心流程的前端实现，覆盖创建、投票、结果展示等完整链路；设计并实现多类型 Space（Collective、Whitelist）的通用交互与展示逻辑；排查并解决 SSR、水合及复杂交互场景下的稳定性问题。"
           ],
-          "stack": ["React", "Next.js", "TailwindCSS"]
+          "stack": [
+            "React",
+            "Next.js",
+            "TailwindCSS"
+          ]
         },
         {
           "name": "Statescan",
           "desc": [
             "参与 Statescan v2 核心页面与数据展示模块开发，对接链上索引与查询服务；优化账户、交易、事件等复杂数据页面的性能、加载体验与结构设计；处理多链配置与跨链数据的前端展示一致性问题。"
           ],
-          "stack": ["React", "Next.js", "TailwindCSS"]
+          "stack": [
+            "React",
+            "Next.js",
+            "TailwindCSS"
+          ]
         },
         {
           "name": "Collaboration（协作与治理平台）",
           "desc": [
             "负责协作平台主要前端功能的开发与维护，涵盖 Proposal、Voting、Discussion、Evidence 等模块；实现并优化富文本编辑、评论系统、权限与安全相关交互；对接后端 API、钱包签名与链下存储（IPFS），保障业务流程的完整性与稳定性。"
           ],
-          "stack": ["React", "Next.js", "Node.js", "Koa", "MongoDB", "IPFS"]
+          "stack": [
+            "React",
+            "Next.js",
+            "Node.js",
+            "Koa",
+            "MongoDB",
+            "IPFS"
+          ]
         }
       ]
     },
     {
       "companyName": "Impact Theory",
       "job": "高级前端工程师",
-      "timeRange": ["2022-04", "2024-12"],
+      "timeRange": [
+        "2022-04",
+        "2024-12"
+      ],
       "jobContent": [
         {
           "name": "Kyzen Launcher",
           "desc": [
             "负责开发Windows桌面端游戏的启动器，包含游戏资源下载、热更新等功能。从0到1参与搭建、开发新需求、维护功能等"
           ],
-          "stack": ["Electron", "TypeScript"]
+          "stack": [
+            "Electron",
+            "TypeScript"
+          ]
         },
         {
           "name": "游戏数据运营中心",
@@ -95,14 +119,20 @@
           "desc": [
             "负责开发Impact Theory University的前端页面，包含课程展示、用户注册、学习进度等功能。通过Next.js和Chakra UI进行页面布局和样式设计，实现响应式和交互式的用户体验。从0到1参与搭建，负责整体架构设计和核心功能开发。"
           ],
-          "stack": ["Next.js", "Chakra UI"]
+          "stack": [
+            "Next.js",
+            "Chakra UI"
+          ]
         }
       ]
     },
     {
       "companyName": "北京小桔科技有限公司 ",
       "job": "高级前端工程师 智能中台",
-      "timeRange": ["2021-06", "2022-04"],
+      "timeRange": [
+        "2021-06",
+        "2022-04"
+      ],
       "jobContent": [
         {
           "name": "滴滴客服IM",
@@ -123,7 +153,12 @@
           "desc": [
             "主要用于对接滴滴各个业务线的运营数据，进行数据的监控和预警。项目中我主要负责整体架构设计和核心功能开发，使用React + Ant Design UI进行页面布局和样式设计，使用Redux进行状态管理，实现高效的数据交互和页面渲染。项目按期上线，并得到内部嘉奖。"
           ],
-          "stack": ["React", "Ant Design UI", "UmiJS", "TypeScript"]
+          "stack": [
+            "React",
+            "Ant Design UI",
+            "UmiJS",
+            "TypeScript"
+          ]
         },
         {
           "name": "运营工作台",
@@ -144,42 +179,68 @@
     {
       "companyName": "九机科技有限公司",
       "job": "中级前端工程师",
-      "timeRange": ["2020-09", "2021-06"],
+      "timeRange": [
+        "2020-09",
+        "2021-06"
+      ],
       "jobContent": [
         {
           "name": "九机OA系统",
           "desc": [
             "是九机员工使用的一款内部办公软件，整合了O2O系统。主要负责开发和维护内部员工管理的有人事管理、分公司管理、销售管理等。以及销售系统的库存管理、进货管理、市场管理等。提高员工的工作效率，和完善流程化的操作，方便快捷。"
           ],
-          "stack": ["Vue2", "AntdV", "VueX", "VueRouter ", "Webpack"]
+          "stack": [
+            "Vue2",
+            "AntdV",
+            "VueX",
+            "VueRouter ",
+            "Webpack"
+          ]
         },
         {
           "name": "九讯云",
           "desc": [
             "是基于九机现有的内部系统，进⾏精简和优化处理的⼀个O2O产品，经过五个⽉团队的开发圆满完成预期⼯期，并且有多家租户上线使⽤。"
           ],
-          "stack": ["Vite", "Vue3", "VueX4", "Vue Router4"]
+          "stack": [
+            "Vite",
+            "Vue3",
+            "VueX4",
+            "Vue Router4"
+          ]
         }
       ]
     },
     {
       "companyName": "昊远农林规划设计有限公司",
       "job": "前端开发工程师",
-      "timeRange": ["2019-05", "2020-07"],
+      "timeRange": [
+        "2019-05",
+        "2020-07"
+      ],
       "jobContent": [
         {
           "name": "高速林木维护",
           "desc": [
             "基于 Uni-app 开发跨平台移动端应用，实现林木信息录入、巡检任务分配、数据同步和 ECharts 可视化展示，提升维护效率与准确性。"
           ],
-          "stack": ["Uni-app", "ECharts"]
+          "stack": [
+            "Uni-app",
+            "ECharts"
+          ]
         },
         {
           "name": "复工登记",
           "desc": [
             "基于 Vue2 + Vant UI 的疫情复工上报应用，使用 Axios + Vuex 管理数据状态，实现自动化测温数据归类与异常可视化预警。"
           ],
-          "stack": ["Vue2", "Vant UI", "VueX", "VueRouter", "VueCli"]
+          "stack": [
+            "Vue2",
+            "Vant UI",
+            "VueX",
+            "VueRouter",
+            "VueCli"
+          ]
         }
       ]
     }

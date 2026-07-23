@@ -69,7 +69,13 @@
     },
     {
       "category": "跨平台与构建",
-      "tags": ["Electron", "Vite", "Webpack", "TurboRepo", "ESBuild"]
+      "tags": [
+        "Electron",
+        "Vite",
+        "Webpack",
+        "TurboRepo",
+        "ESBuild"
+      ]
     }
   ],
   "work": [
@@ -84,7 +90,8 @@
         "主导治理核心流程（提案创建、投票、执行）的前端落地，处理链下签名与链上提交的异步链路衔接，设计乐观更新机制保障操作反馈即时性",
         "优化 SSR 与客户端水合流程，解决钱包状态在服务端不可用场景下的恢复策略与链上数据预取时序问题，首屏 FCP 从 [X]s 降至 [X]s",
         "与后端及链上索引服务协作，设计 GraphQL 数据订阅方案，通过增量更新与本地状态合并策略，保障前端数据与链上状态的最终一致性"
-      ]
+      ],
+      "experience": []
     },
     {
       "company": "Impact Theory",
@@ -99,8 +106,8 @@
       ]
     },
     {
-      "company": "滴滴（小桔科技）",
-      "title": "高级前端工程师（智能中台）",
+      "company": "北京小桔科技有限公司",
+      "title": "高级前端工程师",
       "start": "2021.06",
       "end": "2022.04",
       "context": "滴滴出行智能中台，面向客服与运营团队的内部支撑系统，涵盖客服 IM 即时通讯、运营监控预警与运营工作台，服务数万客服与运营人员。",
@@ -163,7 +170,11 @@
         "设计多任务下载调度与状态管理模型，基于 Electron 主进程维护下载队列，支持并发数控制、断点续传与失败自动重试，通过文件分块校验保障下载完整性",
         "实现热更新机制——对比本地版本与远端版本清单，增量下载差异文件并验证完整性后完成替换，保障更新过程不出错"
       ],
-      "techStack": ["Electron", "TypeScript", "React"]
+      "techStack": [
+        "Electron",
+        "TypeScript",
+        "React"
+      ]
     },
     {
       "name": "滴滴客服 IM 系统",
@@ -175,7 +186,13 @@
         "基于 Vue2 + Vuex 维护多会话、多角色的消息状态同步逻辑，结合 WebSocket 处理消息接收、缓存与状态更新，处理网络重连后的消息补推与去重",
         "参与前端技术栈迁移（React／jQuery → Vue2），协助完成核心模块的重构与技术方案落地"
       ],
-      "techStack": ["Vue2", "Vuex", "VueRouter", "WebSocket", "TypeScript"]
+      "techStack": [
+        "Vue2",
+        "Vuex",
+        "VueRouter",
+        "WebSocket",
+        "TypeScript"
+      ]
     },
     {
       "name": "Polkadot Statescan",
@@ -187,7 +204,14 @@
         "处理多链配置与跨链数据的前端展示一致性问题，设计统一的链切换控件与数据聚合展示方案",
         "优化长列表虚拟滚动与增量加载策略，结合 IntersectionObserver 实现按需加载，提升大数据量页面的滚动流畅度"
       ],
-      "techStack": ["React", "Next.js", "TailwindCSS", "Koa", "MongoDB", "IPFS"]
+      "techStack": [
+        "React",
+        "Next.js",
+        "TailwindCSS",
+        "Koa",
+        "MongoDB",
+        "IPFS"
+      ]
     }
   ],
   "openSource": [
@@ -202,7 +226,13 @@
         "同时支持本地工程扫描（node_modules 分析）和远程仓库扫描（Git Clone 后分析），覆盖开发与审查场景",
         "审计结果输出为标准化 Markdown 文件，预留 JSON／HTML 等多格式渲染扩展能力，可接入 CI 门禁流程"
       ],
-      "techStack": ["Node.js", "MCP Server", "Zod", "TypeScript", "GitHub API"]
+      "techStack": [
+        "Node.js",
+        "MCP Server",
+        "Zod",
+        "TypeScript",
+        "GitHub API"
+      ]
     },
     {
       "name": "RAG SaaS 系统",
@@ -230,6 +260,12 @@
     "major": "计算机信息管理",
     "start": "2016",
     "end": "2019",
-    "courses": ["数据结构", "计算机网络", "操作系统", "数据库原理", "编译原理"]
+    "courses": [
+      "数据结构",
+      "计算机网络",
+      "操作系统",
+      "数据库原理",
+      "编译原理"
+    ]
   }
 }

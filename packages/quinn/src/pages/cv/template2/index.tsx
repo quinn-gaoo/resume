@@ -1,8 +1,9 @@
 import dayjs from 'dayjs'
-import data from './data.json'
+import data from './data'
 import { PiPhoneFill, PiGithubLogoFill, PiEnvelopeFill, PiGlobeFill, PiNotebookFill, PiWechatLogoFill } from "react-icons/pi";
-import newData from './data.json'
-
+import newData from './data'
+import { cn } from '@/lib/utils';
+import { useMemo } from 'react';
 
 const row = [
   [
@@ -17,6 +18,15 @@ const row = [
       value: data.phoneNumber,
       Icon: PiPhoneFill
     },
+    {
+      label: "学 校",
+      value: "长春工业大学",
+      // href: `//blog.qiangqiang.work`,
+      Icon: PiNotebookFill
+    },
+
+  ],
+  [
 
     {
       label: "邮 箱",
@@ -24,9 +34,6 @@ const row = [
       href: `mailto:${data.email}`,
       Icon: PiEnvelopeFill
     },
-  ],
-  [
-
     {
       label: "网 站",
       value: data.site,
@@ -34,17 +41,12 @@ const row = [
       Icon: PiGlobeFill
     },
     {
-      label: "博 客",
-      value: "blog.qiangqiang.work",
-      href: `//blog.qiangqiang.work`,
-      Icon: PiNotebookFill
-    },
-    {
       label: "GitHub",
       value: data.githubSite,
       href: `//${data.githubSite}`,
       Icon: PiGithubLogoFill
     },
+
   ],
 ]
 
@@ -52,6 +54,14 @@ export default function Template1() {
   const day = new Date();
   document.title = `高强强-高级前端开发工程师-${day.getFullYear()}.${day.getMonth() + 1}.${day.getDate()}`;
   data.birthTime
+
+  const projects = useMemo(() => {
+    const list: any[] = []
+    newData.work.forEach(item => {
+      list.push(...item.projects)
+    })
+    return list
+  }, [newData.work])
   return (<>
     <div className="w-screen flex flex-col  bg-[#faf9f9] text-[#07132b] pb-[20vh] print:py-0 print-color-adjust-exact">
       <div className="relative w-[21cm] p-8 print:p-0  min-h-[29.7cm] bg-white mx-auto shadow print:shadow-none rounded print:rounded-none ">
@@ -59,8 +69,7 @@ export default function Template1() {
           <div className="text-center">
             <h2 className='py-2 font-semibold tracking-tight text-2xl '>{data.name}</h2>
             <div className="font-medium tracking-tight text-sm">
-              <span>男</span> · <span>{dayjs().diff(new Date(data.birthTime), "y")}岁</span> · <span>工作{dayjs().diff(new Date(data.workStartTime), "y")}年</span> · <span>本科</span>
-              {/* · <span>月内到岗</span> */}
+              <span>男</span> · <span>{dayjs().diff(new Date(data.birthTime), "y")}岁</span> · <span>工作{dayjs().diff(new Date(data.workStartTime), "y")}年</span>
             </div>
           </div>
           <div className="w-full font-[450] py-2 text-sm ">
@@ -90,8 +99,8 @@ export default function Template1() {
 
           </div>
         </div>
-        <div className="" id="skills">
-          <section className='py-2'>
+        <div className="" >
+          <section className='py-2' id="skills">
             <h2 className="py-2 pt-1 font-medium text-xl">技术栈</h2>
             <ul className=" text-sm leading-7 flex flex-wrap gap-2   text-[#2b405b]">
               <li className="">
@@ -108,7 +117,7 @@ export default function Template1() {
                 掌握主流构建工具（如：Vite、Webpack、Rollup等）了解不同工具核心原理以及差异，并拥有自定义脚手架的能力，能根据需求从0到1搭建monorepo/multirepo 仓库项目，有自定义构建流程CI/CD和打包优化的能力，更具项目添加服务监控和日志分析能力。
               </li>
               <li>
-                <span className="inline-block px-2.5 rounded-3xl font-bold mr-1 bg-[#dde1987a] leading-5">后段能力</span>
+                <span className="inline-block px-2.5 rounded-3xl font-bold mr-1 bg-[#dde1987a] leading-5">后端能力</span>
                 熟悉 Node.js及 Express/Koa 框架，能够设计出符合 RESTful API 风格的接口层以及 BFF 服务的落地实现。了解后端数据库（如PostgreSQL、MongoDB等）和缓存（如Redis等）,能够设计简单数据库模型，进行数据CRUD操作。
               </li>
               <li>
@@ -117,12 +126,12 @@ export default function Template1() {
               </li>
               <li>
                 <span className="inline-block px-2.5 rounded-3xl font-bold mr-1 bg-[#dde1987a] leading-5">AI能力</span>
-                将 AI 编程工具（Claude Code、Cursor、Codex... ）集成至日常开发工作流中。了解AI 技术如：RAG, MCP, Skill等,有一定Rag 知识库和Mcp工具开发经验。
+                将 AI 编程工具（Claude Code、Cursor、Codex... ）集成至日常开发工作流中。了解AI 相关技术如：RAG, MCP, Skill, Langchain 等。
               </li>
-              <li>
+              {/* <li>
                 <span className="inline-block px-2.5 rounded-3xl font-bold mr-1 bg-[#dde1987a] leading-5">前端基础</span>
                 拥有扎实的HTML、CSS、JavaScript基础，针对部分前端核心知识有深入研究，心得发布博客平台。熟练掌握Typescript,并在大型项目中能能够利用Typescript 进行了类型检查和代码优化，提升代码的可维护性和可靠性。
-              </li>
+              </li> */}
             </ul>
           </section>
 
@@ -144,12 +153,12 @@ export default function Template1() {
             </header>
             <div className="grid gap-4">
               {
-                newData.projects.map((project, index) => {
+                projects.map((project, index) => {
                   return <ProjectItem project={project} key={index} />
                 })}
             </div>
           </section>
-          <section id="other-projects">
+          {/* <section id="other-projects">
             <header className="pb-2">
               <h2 className="py-2 font-semibold text-xl text-[#07132b]">其他项目</h2>
             </header>
@@ -159,7 +168,7 @@ export default function Template1() {
                   return <OpenProjectItem project={item} key={index} />
                 })}
             </div>
-          </section>
+          </section> */}
           <Education />
         </div>
       </div>
@@ -171,8 +180,8 @@ export default function Template1() {
 
 
 function WorkItem({ work }: any) {
-  return <div className="bg-card text-card-foreground">
-    <div className="flex flex-col py-3 space-y-2">
+  return <div className="bg-card text-card-foreground space-y-2.5">
+    <div className="flex flex-col py-2 ">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <div className='flex gap-1 items-center'>
           <h3 className="font-semibold tracking-tight text-[18px]">{work.company}</h3>·
@@ -181,47 +190,64 @@ function WorkItem({ work }: any) {
         <span className="text-sm text-muted-foreground">{work.start}  – {work.end}</span>
       </div>
     </div>
-    <div className="py-2 pt-0 text-sm leading-7  text-[#2b405b]">
-      {work.context}
-    </div>
-    <div className="pb-3">
-      <ul className="space-y-2.5">
-        {work.highlights.map((r: any, i: any) => (
+    <div className={cn(work.experience?.length > 0 ? "" : " hidden")}>
+      <div className=" pl-8">
+        {work.experience?.map((r: any, i: any) => (
           <li key={i} className="flex gap-2.5 text-sm leading-7 text-[#2b405b]">
             <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#07132b]" aria-hidden="true"></span>
             <span>{r}</span>
           </li>
         ))}
-      </ul>
+      </div>
     </div>
   </div>
 }
 
 function ProjectItem({ project }: any) {
 
-  return <div className="text-card-foreground ">
-    <div className="flex flex-col py-3">
+  return <div className="text-card-foreground space-y-3">
+    <div className="flex flex-col ">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="font-semibold tracking-tight text-xl">{project.name}</h3>
         <span className="text-sm text-muted-foreground">{project.start}  – {project.end}</span>
       </div>
     </div>
-    <div className="py-3 text-sm leading-7 text-[#2b405b]">
+    <div className=" text-sm leading-7 text-[#2b405b]">
       {project.description}
     </div>
-    <div className="py-3 pt-0">
-      <ul className="space-y-2.5">
-        {project.highlights.map((r: any, i: any) => (
-          <li key={i} className="flex gap-2.5 text-sm leading-7 text-[#2b405b]">
-            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#07132b]" aria-hidden="true"></span>
-            <span>{r}</span>
-          </li>
-        ))}
-        <div className="text-sm text-muted-foreground">
-          <span className='font-medium text-card-foreground'>技术栈：</span>
-          {project.techStack.join(" / ")}
+    <div className="text-sm text-muted-foreground">
+      <span className='font-medium text-card-foreground'>技术栈：</span>
+      {project.stack.join(" / ")}
+    </div>
+    <div className="space-y-2">
+      {/* {
+        project.responsibilities?.length > 0 &&
+        <div>
+          <h1 className="font-medium text-sm text-[#2b405b]">项目职责</h1>
+          <div className="pl-4">
+            {project.responsibilities?.map((r: any, i: any) => (
+              <li key={i} className="flex gap-2.5 text-sm leading-7 text-[#2b405b]">
+                <span>{i + 1}.</span>
+                <span>{r}</span>
+              </li>
+            ))}
+          </div>
         </div>
-      </ul>
+      } */}
+      {
+        project.highlights?.length > 0 &&
+        <div>
+          <h1 className="font-medium text-sm text-[#2b405b]">项目业绩</h1>
+          <div className="pl-4">
+            {project.highlights.map((r: any, i: any) => (
+              <li key={i} className="flex gap-2.5 text-sm leading-7 text-[#2b405b]">
+                <span>{i + 1}.</span>
+                <span>{r}</span>
+              </li>
+            ))}
+          </div>
+        </div>
+      }
     </div>
   </div>
 }

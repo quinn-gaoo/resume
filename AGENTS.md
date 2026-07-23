@@ -48,3 +48,44 @@ No test framework or test scripts exist across the repo.
 - `quinn:build` runs `tsc -b` first, then `vite build`. Lint failures or type errors will block the build.
 - No typecheck command exists for the blog (JS-only).
 - No CI or pre-commit hooks configured.
+
+
+## 项目名称
+
+ 1. 适当添加英文单词，但是不要强行添加
+ 2. 常用词汇： 智能，云服务，平台等
+ 3. 不太好的词汇： xxx管理系统
+  - bad example: 数据中心基础设置管理系统，学生管理系统
+  - good example: DCIM数字化管控系统，智能云端学生平台
+
+## 项目描述
+  1. 两到三行
+  2. 简单讲下项目背景， 项目分为哪些模块
+
+## 技术栈
+ 书写关键技术名词，注意大小写，只写库/框架级别，不要有拼写错误
+
+## 项目职责描述
+
+1. 描述在项目里面做了什么事情
+2. 注意： 只描述做了事情，不要写细枝末节如何实现
+
+**项目职责描述示**
+bad example:
+优化element-select 添加分野，解决数据量过大选择后卡顿的问题
+good example:
+优化分页因数据量过大导致选择卡顿问题
+
+bad example:
+根据登录用户权限生成路由数据，通过addRoutes方法动态添加路由
+good example:
+根据用户权限实现动态路由
+
+bad example:
+使用Vue 的定义指令 derective 写按钮权限指令，方便对不同的钱选人员放不同的权限
+good example:
+实现按钮级别的权限控制
+
+## 项目亮点描述
+
+1. 给落地效果，这种效果一般比较宽泛的，并且有具象化数据支撑的（如果不适合数据描述的不要强行添加）

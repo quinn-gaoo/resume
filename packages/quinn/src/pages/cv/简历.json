@@ -69,7 +69,13 @@
     },
     {
       "category": "跨平台与构建",
-      "tags": ["Electron", "Vite", "Webpack", "TurboRepo", "ESBuild"]
+      "tags": [
+        "Electron",
+        "Vite",
+        "Webpack",
+        "TurboRepo",
+        "ESBuild"
+      ]
     }
   ],
   "work": [
@@ -154,7 +160,6 @@
         "quilljs"
       ]
     },
-
     {
       "name": "滴滴客服 IM 系统前端技术栈统一",
       "start": "2021.06",
@@ -165,7 +170,13 @@
         "负责定制化消息组件的设计与开发，覆盖文本、图片、图文混排等多类型消息展示与交互场景",
         "基于 Vue2 + Vuex 维护多会话、多角色的消息状态同步逻辑，结合 WebSocket 处理消息接收、缓存与状态更新，处理网络重连后的消息补推与去重"
       ],
-      "techStack": ["Vue2", "Vuex", "VueRouter", "WebSocket", "TypeScript"]
+      "techStack": [
+        "Vue2",
+        "Vuex",
+        "VueRouter",
+        "WebSocket",
+        "TypeScript"
+      ]
     }
   ],
   "openSource": [
@@ -179,7 +190,13 @@
         "同时支持本地工程扫描（node_modules 分析）和远程仓库扫描（Git Clone 后分析），覆盖开发与审查场景",
         "审计结果输出为标准化 Markdown 文件，预留 JSON／HTML 等多格式渲染扩展能力，可接入 CI 门禁流程"
       ],
-      "techStack": ["Node.js", "MCP Server", "Zod", "TypeScript", "GitHub API"]
+      "techStack": [
+        "Node.js",
+        "MCP Server",
+        "Zod",
+        "TypeScript",
+        "GitHub API"
+      ]
     },
     {
       "name": "RAG SaaS 系统",
@@ -207,6 +224,12 @@
     "major": "计算机信息管理",
     "start": "2016",
     "end": "2019",
-    "courses": ["数据结构", "计算机网络", "操作系统", "数据库原理", "编译原理"]
+    "courses": [
+      "数据结构",
+      "计算机网络",
+      "操作系统",
+      "数据库原理",
+      "编译原理"
+    ]
   }
 }

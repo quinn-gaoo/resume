@@ -1,10 +1,9 @@
 import ProjectExperience from "@/components/business/home/ProjectExperience";
 import { Button } from "@/components/ui/button";
-import data from '@/data/personal-details.json'
 import workData from '@/data/work-data.json'
 import dayjs from "dayjs";
 import { toast } from "sonner";
-
+import data from "../cv/template2/data";
 
 
 const baseInfo = [
@@ -124,7 +123,6 @@ function App() {
                         <h3 className="font-medium tracking-tight text-base">{item.title}</h3>
                         <span className="text-sm text-muted-foreground">{item.desc}</span>
                       </div>
-                      {/* <p className="text-muted-foreground text-xs uppercase tracking-[0.16em]">{item.position}</p> */}
                     </div>
                   </div>
                 })
@@ -137,18 +135,18 @@ function App() {
             </header>
             <div className=" space-y-4">
               {
-                workData.workExperience.map((item, index) => {
+                data.work.map((item, index) => {
                   return <div key={index} className="rounded-xl border border-border/80 bg-card text-card-foreground shadow-sm md:p-6">
                     <div className="flex flex-col p-6 space-y-2">
                       <div className="flex flex-wrap items-baseline justify-between gap-2">
                         <h3 className="font-semibold tracking-tight text-xl">{item.company}</h3>
-                        <span className="text-sm text-muted-foreground">{item.timeRange[0]} – {item.timeRange[1]}</span>
+                        <span className="text-sm text-muted-foreground">{item.start} – {item.end}</span>
                       </div>
-                      <p className="text-muted-foreground text-xs uppercase tracking-[0.16em]">{item.position}</p>
+                      <p className="text-muted-foreground text-xs uppercase tracking-[0.16em]">{item.title}</p>
                     </div>
                     <div className="p-6 pt-0">
                       <ul className="space-y-2.5">
-                        {item.responsibilities.map((r, i) => (
+                        {item.experience.map((r, i) => (
                           <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
                             <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground" aria-hidden="true"></span>
                             <span>{r}</span>

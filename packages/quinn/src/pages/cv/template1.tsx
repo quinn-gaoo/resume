@@ -127,7 +127,7 @@ export default function Template1() {
                 })}
             </div>
           </section>
-          <section id="other-projects">
+          {/* <section id="other-projects">
             <header className="pb-2">
               <h2 className="py-2 font-semibold text-2xl text-[#07132b]">其他项目</h2>
             </header>
@@ -137,7 +137,7 @@ export default function Template1() {
                   return <OpenProjectItem project={item} key={index} />
                 })}
             </div>
-          </section>
+          </section> */}
           <Education />
         </div>
       </div>
