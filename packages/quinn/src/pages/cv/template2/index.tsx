@@ -252,33 +252,7 @@ function ProjectItem({ project }: any) {
   </div>
 }
 
-function OpenProjectItem({ project }: { project: any }) {
-  return <div className="text-card-foreground  ">
-    <div className="flex flex-col py-3">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h3 className="font-semibold tracking-tight text-xl">{project.name}</h3>
-        {/* <a href={project.url} className="text-sm text-muted-foreground">项目预览</a> */}
-      </div>
-    </div>
-    <p className="py-3 text-sm leading-7 text-[#2b405b]">
-      {project.description}
-    </p>
-    <div className="py-3 pt-1">
-      <ul className="space-y-2.5">
-        {project.highlights.map((r: any, i: any) => (
-          <li key={i} className="flex gap-2.5 text-sm leading-7 text-[#2b405b]">
-            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#07132b]" aria-hidden="true"></span>
-            <span>{r}</span>
-          </li>
-        ))}
-        <div className="text-sm text-muted-foreground">
-          <span className='font-medium text-card-foreground'>技术栈：</span>
-          {project.techStack.join(" / ")}
-        </div>
-      </ul>
-    </div>
-  </div>
-}
+
 
 
 

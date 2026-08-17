@@ -2,7 +2,6 @@ import ProjectExperience from "@/components/business/home/ProjectExperience";
 import { Button } from "@/components/ui/button";
 // import workData from '@/data/work-data.json'
 import dayjs from "dayjs";
-import { toast } from "sonner";
 import data from "../cv/template2/data";
 
 
