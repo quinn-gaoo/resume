@@ -8,6 +8,7 @@ import rehypeStringify from "rehype-stringify";
 import rehypeRaw from "rehype-raw";
 import gfm from "remark-gfm";
 import rehypeCodeBlock from "./rehype-code-block";
+import rehypeTableWrapper from "./rehype-table-wrapper";
 import { extractHeadings, addHeadingIds } from "./headings";
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
@@ -117,6 +118,7 @@ export async function getPostData(slug) {
     .use(rehypeRaw)
     .use(rehypeHighlight, { ignoreMissing: true })
     .use(rehypeCodeBlock)
+    .use(rehypeTableWrapper)
     .use(rehypeStringify)
     .process(post.content);
   const contentHtml = addHeadingIds(processedContent.toString());

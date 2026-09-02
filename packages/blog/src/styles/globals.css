@@ -356,15 +356,44 @@ body {
   border-radius: 0 0.375rem 0.375rem 0;
 }
 
-.prose table {
+.prose .table-wrapper {
+  display: block;
   width: 100%;
-  border-collapse: collapse;
+  max-width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
-  background-color: var(--card);
-  border-radius: 0.5rem;
-  overflow: hidden;
   border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background-color: var(--card);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
+  scrollbar-width: thin;
+}
+
+.prose .table-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.prose .table-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 999px;
+}
+
+.prose .table-wrapper:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.prose .table-wrapper > table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
 }
 
 .prose th, .prose td {
@@ -395,6 +424,27 @@ body {
   border-radius: 0.5rem;
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
+}
+
+/* 移动端表格：缩小列宽，同时保留 table-wrapper 的横向滚动 */
+@media (max-width: 639px) {
+  .prose .table-wrapper > table {
+    min-width: 640px;
+  }
+
+  .prose .table-wrapper th,
+  .prose .table-wrapper td {
+    max-width: 140px;
+    padding: 0.625rem 0.5rem;
+    font-size: 0.875rem;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .prose .table-wrapper th:first-child,
+  .prose .table-wrapper td:first-child {
+    min-width: 160px;
+  }
 }
 
 /* 暗色模式 */
